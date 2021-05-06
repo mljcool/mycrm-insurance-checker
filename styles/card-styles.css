@@ -3,8 +3,16 @@
   border-radius: 5px;
   margin-bottom: 1rem;
   padding-left: 10px;
-  padding-top: 9px;
-  padding-bottom: 9px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  box-shadow: -1px 1px 1px rgb(156 156 156 / 16%),
+    -1px 3px 3px rgb(79 78 78 / 23%);
+}
+
+.ic_card_header {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 10px;
 }
 
 .ic_card_avatar {
@@ -21,15 +29,27 @@
 }
 
 .ic_card_name_label,
-.ic_card_labels {
+.ic_card_labels,
+.ic_card_provider_details,
+.ic_card_insurance_data,
+.ic_card_inner_info {
   display: flex;
+}
+
+.ic_card_benefit_details {
+  margin-top: 1.4rem;
+}
+.ic_card_provider_details {
+  margin-top: 1.5rem;
+  justify-content: space-between;
 }
 
 .ic_card_name_label {
   align-items: center;
 }
 
-.ic_card_labels {
+.ic_card_labels,
+.ic_card_insurance_data {
   margin-left: 8px;
   flex-direction: column;
 }
@@ -42,4 +62,59 @@
 .ic_card_name {
   font-weight: bold;
   color: #8d76a0;
+}
+
+.ic_card_policy {
+  font-size: 13px;
+  color: #8d76a0;
+  font-weight: 400;
+}
+
+.ic_card_premium {
+  font-weight: bold;
+  color: #8d76a0;
+}
+
+.ic_card_btn_sync {
+  border: 0;
+  background: #44b3b4;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  height: fit-content;
+  cursor: pointer;
+  padding: 8px 15px;
+  margin: 0;
+}
+
+.ic_card_fnd {
+  font-size: 13px;
+  color: #8d76a0;
+  font-weight: 500;
+}
+
+.ic_card_body {
+  margin-top: 1.5rem;
+}
+
+.ic_card_cover_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ic_card_cover_label {
+  display: flex;
+  align-items: center;
+}
+.ic_card_cover_label span {
+  font-size: 13px;
+  color: #8d76a0;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.ic_card_cover_amount {
+  font-size: 13px;
+  color: #8d76a0;
+  font-weight: 500;
 }
