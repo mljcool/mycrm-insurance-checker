@@ -1,0 +1,45 @@
+#ic_list_container {
+  padding: 10px 12px 2px 12px;
+}
+
+#ic_list_items {
+  margin-top: 1rem;
+  overflow-y: auto;
+  max-height: 370px;
+  height: 100%;
+}
+
+.ic_list_selections {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.ic_list_selections a {
+  margin-right: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  padding: 7px 11px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  color: #8d8d8d;
+  letter-spacing: 1px;
+}
+
+.ic_list_selections a span {
+  margin-left: 4px;
+  font-size: 10px;
+}
+
+.ic_list_selections a:hover {
+  background: #c9c9c9;
+  color: #fff;
+}
+
+.ic_list_selections a.active {
+  background: #44b3b4;
+  color: #fff;
+}

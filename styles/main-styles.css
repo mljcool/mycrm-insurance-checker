@@ -22,15 +22,25 @@ body {
   background: white;
 }
 
-#ic_navbar {
+#ic_main_navbar {
   background: #f6f6f6;
   padding: 15px 10px 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.ic_logo_block {
+.ic_main_logo_block {
   display: flex;
   flex-direction: column;
   color: #969696;
   font-size: 14px;
   font-weight: 400;
+}
+
+.ic_main_settings_block {
+  cursor: pointer;
+}
+.ic_main_settings_block:hover {
+  filter: invert(0.4);
 }

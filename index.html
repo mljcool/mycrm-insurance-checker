@@ -1,27 +1,64 @@
 <!DOCTYPE html>
-<html ng-app="AngularChromeEx" ng-csp>
+<html ng-app="InsurancCheckecChromeEx" ng-csp>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Insurance Checker</title>
     <script src="scripts/lib/jquery-3.6.0.min.js"></script>
-    <!-- <script src="scripts/lib/angular.min.js"></script> -->
+    <script src="scripts/lib/angular.min.js"></script>
+    <script src="scripts/extension/app.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" type="text/css" href="styles/main-styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles/list-styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles/card-styles.css" />
   </head>
-  <body>
+  <body ng-controller="appCtrl">
     <div id="app_checker">
-      <div id="ic_navbar">
-        <div class="ic_logo_block">
+      <!--START NAVBAR -->
+      <div id="ic_main_navbar">
+        <div class="ic_main_logo_block">
           <img src="./assets/mycrm-logo.png" width="100px" height="30px" />
           <span>Insurance Checker</span>
         </div>
+        <div class="ic_main_settings_block">
+          <img src="./assets/icon_settings.svg" width="25px" height="25px" />
+          <img src="./assets/icon_side_menu.svg" width="25px" height="25px" />
+        </div>
       </div>
+      <!--END NAVBAR -->
+
+      <!--START LIST NAVIGATION -->
+      <div id="ic_list_container">
+        <div class="ic_list_selections">
+          <a class="active">All <span>(2)</span></a>
+          <a>In Progress <span>(15)</span></a>
+          <a>Cancelled <span>(8)</span></a>
+        </div>
+
+        <div id="ic_list_items">
+          <div class="ic_card" ng-repeat="client in clientList">
+            <div class="ic_card_header">
+              <div class="ic_card_name_label">
+                <div class="ic_card_avatar">
+                  {{client.prefix}}
+                </div>
+                <div class="ic_card_labels">
+                  <span class="ic_card_ins"> Insured Person</span>
+                  <span class="ic_card_name">
+                    {{client.fname}} {{client.lname}}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--END LIST NAVIGATION -->
     </div>
   </body>
 </html>
