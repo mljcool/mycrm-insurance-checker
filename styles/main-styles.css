@@ -1,0 +1,36 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Roboto';
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app_checker {
+  height: 100vh;
+  background: white;
+}
+
+#ic_navbar {
+  background: #f6f6f6;
+  padding: 15px 10px 8px 10px;
+}
+
+.ic_logo_block {
+  display: flex;
+  flex-direction: column;
+  color: #969696;
+  font-size: 14px;
+  font-weight: 400;
+}
