@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="styles/main-styles.css" />
     <link rel="stylesheet" type="text/css" href="styles/list-styles.css" />
     <link rel="stylesheet" type="text/css" href="styles/card-styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles/scroll.css" />
   </head>
   <body ng-controller="appCtrl">
     <div id="app_checker">
@@ -86,9 +87,9 @@
               >
                 <div class="ic_card_cover_label">
                   <img
-                    src="./assets/insurers/1.png"
-                    width="25px"
-                    height="25px"
+                    src="./assets/benefit_icons/{{cover.icon}}.svg"
+                    width="18px"
+                    height="18px"
                   />
                   <span>{{ cover.name}}</span>
                 </div>
