@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Insuranc Checker",
+  "version": "1.1.0",
+  "description": "This extension will check Insurances for clients",
+  "author": "Mark Gocela",
+  "icons": {
+    "128": "./icons/icon128.png",
+    "48": "./icons/icon48.png",
+    "16": "./icons/icon16.png"
+  },
+  "page_action": {
+    "default_icon": "./icons/icon128.png",
+    "default_popup": "index.html",
+    "default_title": "Insurance Checker"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "tabs",
+    "notifications",
+    "contextMenus",
+    "identity"
+  ]
+}

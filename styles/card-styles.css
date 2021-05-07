@@ -70,6 +70,8 @@
 .ic_card_premium {
   font-weight: bold;
   color: #8d76a0;
+  font-size: 15px;
+  padding-top: 2px;
 }
 
 .ic_card_btn_sync {
