@@ -1,3 +1,14 @@
-<div>
-  <h2>COOL</h2>
+<div id="ic_settings_wrapper">
+  <div class="ic_card_settings">
+    <div class="ic_setting_card_header">
+      <span>Settings</span>
+      <button>save</button>
+    </div>
+    <div class="ic_setting_card_body">
+      <div
+        class="ic_card_setting_insurer_list"
+        ng-repeat="insurer in insurerList track by $index"
+      ></div>
+    </div>
+  </div>
 </div>

@@ -43,7 +43,7 @@
         <div class="ic_card_cover_list" ng-repeat="cover in client.covers">
           <div class="ic_card_cover_label">
             <img
-              src="./assets/benefit_icons/{{cover.icon}}.svg"
+              ng-src="{{'./assets/benefit_icons/'+cover.icon+'.svg'}}"
               width="18px"
               height="18px"
             />

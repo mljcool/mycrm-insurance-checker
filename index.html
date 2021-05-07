@@ -7,6 +7,8 @@
     <title>Insurance Checker</title>
     <script src="scripts/lib/jquery-3.6.0.min.js"></script>
     <script src="scripts/lib/angular.min.js"></script>
+    <script src="scripts/extension/constants/memory-data.js"></script>
+    <script src="scripts/extension/utils/helper.js"></script>
     <script src="scripts/extension/app.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto"
@@ -17,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="styles/list-styles.css" />
     <link rel="stylesheet" type="text/css" href="styles/card-styles.css" />
     <link rel="stylesheet" type="text/css" href="styles/scroll.css" />
+    <link rel="stylesheet" type="text/css" href="styles/ic_card_settings.css" />
   </head>
   <body ng-controller="appCtrl">
     <div id="app_checker">
@@ -26,15 +29,17 @@
           <img src="./assets/mycrm-logo.png" width="100px" height="32px" />
           <span>Insurance Checker</span>
         </div>
-        <div class="ic_main_settings_block" role="button">
-          <img src="./assets/icon_settings.svg" width="20px" height="20px" />
-          <img src="./assets/icon_side_menu.svg" width="20px" height="20px" />
-        </div>
+        <div class="page_render" ng-include="'components/menu-bar.html'"></div>
       </div>
       <!--END NAVBAR -->
 
-      <!-- <div class="page_render" ng-include="'pages/settings.html'"></div> -->
-      <div class="page_render" ng-include="'pages/insurance-list.html'"></div>
+      <div class="page_render" ng-include="'pages/settings.html'"></div>
+
+      <!-- <div
+        ng-if="!slideSettings"
+        class="page_render"
+        ng-include="'pages/insurance-list.html'"
+      ></div> -->
     </div>
   </body>
 </html>

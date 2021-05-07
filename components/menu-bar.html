@@ -1,0 +1,19 @@
+<div
+  class="ic_main_settings_block"
+  ng-click="showSettings()"
+  ng-if="!slideSettings"
+  role="button"
+>
+  <img src="./assets/icon_settings.svg" width="20px" height="20px" />
+  <img src="./assets/icon_side_menu.svg" width="20px" height="20px" />
+</div>
+<div
+  ng-if="slideSettings"
+  class="ic_main_settings_block"
+  ng-click="showSettings()"
+  role="button"
+  title="Back to List"
+>
+  <img src="./assets/icon_back_arrow.svg" width="20px" height="20px" />
+  <img src="./assets/icon_side_menu.svg" width="20px" height="20px" />
+</div>
