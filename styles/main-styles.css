@@ -28,6 +28,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #e8e4e4;
 }
 
 .ic_main_logo_block {
@@ -40,6 +41,8 @@ body {
 
 .ic_main_settings_block {
   cursor: pointer;
+  position: relative;
+  top: -2px;
 }
 .ic_main_settings_block:hover {
   filter: invert(0.4);

@@ -1,0 +1,60 @@
+<!--START LIST NAVIGATION -->
+<div id="ic_list_container">
+  <div class="ic_list_selections">
+    <a class="active">All <span>(2)</span></a>
+    <a>In Progress <span>(15)</span></a>
+    <a>Cancelled <span>(8)</span></a>
+  </div>
+
+  <div id="ic_list_items">
+    <div class="ic_card" ng-repeat="client in clientList track by $index">
+      <div class="ic_card_header">
+        <div class="ic_card_name_label">
+          <div class="ic_card_avatar">
+            {{client.prefix}}
+          </div>
+          <div class="ic_card_labels">
+            <span class="ic_card_ins"> Insured Person</span>
+            <span class="ic_card_name"> {{client.fname}} {{client.lname}}</span>
+          </div>
+        </div>
+
+        <div class="ic_card_benefit_details">
+          <span class="ic_card_fnd">
+            Insurance Checker fount 3 benefits from 1 Insurer
+          </span>
+
+          <div class="ic_card_provider_details">
+            <div class="ic_card_inner_info">
+              <div class="ic_card_insurer_logo">
+                <img src="./assets/insurers/1.png" width="65px" height="35px" />
+              </div>
+              <div class="ic_card_insurance_data">
+                <span class="ic_card_policy">127317-01</span>
+                <span class="ic_card_premium"> $180.01 Monthly</span>
+              </div>
+            </div>
+
+            <button class="ic_card_btn_sync">View</button>
+          </div>
+        </div>
+      </div>
+      <div class="ic_card_body">
+        <div class="ic_card_cover_list" ng-repeat="cover in client.covers">
+          <div class="ic_card_cover_label">
+            <img
+              src="./assets/benefit_icons/{{cover.icon}}.svg"
+              width="18px"
+              height="18px"
+            />
+            <span>{{ cover.name}}</span>
+          </div>
+          <div class="ic_card_cover_amount">
+            {{ cover.amount | currency : '$' : 2}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END LIST NAVIGATION -->

@@ -1,4 +1,4 @@
-var app = angular.module('InsurancCheckecChromeEx', []);
+var app = angular.module('InsuranceCheckerChromeEx', []);
 
 app.config([
   '$compileProvider',
