@@ -24,11 +24,23 @@
             width="47px"
             height="28px"
           />
-          <span>James Punett</span>
+          <span>James Punnett</span>
+          <span ng-if="insurer.isConnected">(Linked)</span>
         </div>
         <div class="ic_setting_btn_sync">
-          <button ng-click="onConnect(insurer)" class="connect_btn">
+          <button
+            ng-if="!insurer.isConnected"
+            ng-click="onConnect(insurer)"
+            class="connect_btn"
+          >
             Connect
+          </button>
+          <button
+            ng-if="insurer.isConnected"
+            ng-click="onConnect(insurer)"
+            class="edit_btn"
+          >
+            Edit
           </button>
         </div>
       </div>

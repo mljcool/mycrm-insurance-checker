@@ -46,6 +46,14 @@
   color: white;
 }
 
+.disconnect {
+  background: #e96465;
+}
+
+.disconnect:hover {
+  background: #f79393;
+}
+
 .btn_cancel {
   background: #faf8fd;
   color: #838383;
@@ -73,4 +81,18 @@ button:hover {
   padding: 10px 9px;
   border: 1px solid #cccccc;
   margin-top: 10px;
+}
+
+.ic_connect_status {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.connection_date_status {
+  align-self: center;
+  margin-top: 15px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #a0a0a0;
 }

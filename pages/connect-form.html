@@ -5,16 +5,45 @@
       width="59px"
       height="38px"
     />
-    <span>Connect account</span>
+    <span ng-if="!selectedConnection.isConnected">Connect account</span>
+    <span ng-if="selectedConnection.isConnected">Edit account</span>
   </div>
   <div class="ic_connect_form_card_body">
     <div class="ic_card_connect_form_insurer_list">
-      <div class="ic_connect_form_provider">
+      <div
+        class="ic_connect_form_provider"
+        ng-if="!selectedConnection.isConnected"
+      >
         <input type="text" placeholder="Username" />
         <input type="password" placeholder="Password" />
       </div>
+      <div class="ic_connect_status" ng-if="selectedConnection.isConnected">
+        <div class="ic_card_name_label">
+          <div class="ic_card_avatar">
+            JP
+          </div>
+          <div class="ic_card_labels">
+            <span class="ic_card_ins"> Adviser</span>
+            <span class="ic_card_name"> James Punnett</span>
+          </div>
+        </div>
+        <div class="connection_date_status">
+          Last sync: 2 days ago.
+        </div>
+      </div>
       <div class="ic_connect_form_btn_sync">
-        <button ng-click="onProceed('connect')" class="btn_connect">
+        <button
+          ng-if="selectedConnection.isConnected"
+          ng-click="onProceed('connect')"
+          class="btn_connect disconnect"
+        >
+          Disconnect
+        </button>
+        <button
+          ng-if="!selectedConnection.isConnected"
+          ng-click="onProceed('connect')"
+          class="btn_connect"
+        >
           Connect
         </button>
         <button ng-click="onProceed('cancel')" class="btn_cancel">

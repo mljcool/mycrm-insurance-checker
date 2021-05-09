@@ -87,6 +87,7 @@
 .ic_card_insurer_logo {
   display: flex;
   align-items: center;
+  width: 80%;
 }
 
 .ic_card_insurer_logo span {
@@ -95,14 +96,30 @@
   color: #8d76a0;
   font-weight: 400;
 }
-
-.ic_setting_btn_sync button {
+.ic_setting_btn_sync {
+  width: 20%;
+}
+.ic_setting_btn_sync .connect_btn {
   cursor: pointer;
   border: 0;
   border-radius: 5px;
   background: #44b3b4;
   color: #fff;
+  width: 100%;
 }
+
+.edit_btn {
+  border-radius: 5px;
+  background: #fff;
+  color: #44b3b4;
+  border: 1px solid #44b3b4;
+  width: 100%;
+}
+button {
+  cursor: pointer;
+  padding: 7px 9px;
+}
+
 button:hover {
   background: #6bd6d8;
 }
