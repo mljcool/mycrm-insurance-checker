@@ -3,10 +3,19 @@
 }
 
 .ic_card_settings {
-  border-radius: 8px;
+  border-radius: 6px;
   position: relative;
   box-shadow: -1px 1px 1px rgb(156 156 156 / 16%),
     -1px 3px 3px rgb(79 78 78 / 23%);
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.ic_setting_card_body {
+  overflow-y: auto;
+  max-height: 300px;
+  height: 100%;
+  padding: 0 15px 0px 5px;
 }
 
 .ic_setting_card_header {
@@ -15,6 +24,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
+}
+.ic_setting_card_body,
+.ic_setting_card_subheader {
+  padding: 10px 15px;
+}
+.ic_setting_card_labe {
+  margin-top: 1rem;
+}
+.ic_setting_card_auto {
+  margin-top: 8px;
+  padding-bottom: 1rem;
 }
 
 .ic_setting_card_header span {
@@ -34,4 +54,59 @@
   cursor: pointer;
   padding: 8px 15px;
   margin: 0;
+}
+
+.ic_setting_card_auto {
+  border-bottom: 1px solid #cccccc;
+  display: flex;
+  align-items: center;
+}
+
+.ic_setting_card_auto span {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #8d76a0;
+  font-weight: 400;
+}
+
+.ic_setting_card_label {
+  font-size: 12px;
+  color: #8d76a0;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.ic_setting_provider {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.ic_card_insurer_logo {
+  display: flex;
+  align-items: center;
+}
+
+.ic_card_insurer_logo span {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #8d76a0;
+  font-weight: 400;
+}
+
+.ic_setting_btn_sync button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  background: #44b3b4;
+  color: #fff;
+}
+button:hover {
+  background: #6bd6d8;
+}
+
+.connect_btn {
+  padding: 7px 9px;
 }

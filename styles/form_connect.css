@@ -1,0 +1,76 @@
+.ic_card_connect_forms {
+  border-radius: 6px;
+  position: relative;
+  box-shadow: -1px 1px 1px rgb(156 156 156 / 16%),
+    -1px 3px 3px rgb(79 78 78 / 23%);
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.ic_connect_form_card_body {
+  padding: 10px;
+}
+
+.ic_connect_form_card_header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f6f6f6;
+}
+.ic_connect_form_card_header span {
+  margin-left: 10px;
+  font-size: 18px;
+  color: #8d76a0;
+  font-weight: 600;
+}
+
+.ic_connect_form_btn_sync,
+.ic_connect_form_provider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ic_connect_form_btn_sync button {
+  width: 100%;
+  margin-top: 5px;
+  outline: 0;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn_connect {
+  background: #44b3b4;
+  color: white;
+}
+
+.btn_cancel {
+  background: #faf8fd;
+  color: #838383;
+}
+
+button:hover {
+  background: #6bd6d8;
+}
+
+.ic_connect_form_btn_sync button:first-child {
+  margin-bottom: 5px;
+}
+
+.ic_connect_form_btn_sync {
+  margin-top: 10px;
+}
+
+.ic_connect_form_provider {
+  margin-top: 0.5rem;
+}
+
+.ic_connect_form_provider input {
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px 9px;
+  border: 1px solid #cccccc;
+  margin-top: 10px;
+}

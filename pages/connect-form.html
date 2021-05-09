@@ -1,0 +1,26 @@
+<div class="ic_card_connect_forms">
+  <div class="ic_connect_form_card_header">
+    <img
+      ng-src="{{'./assets/insurers/'+selectedConnection.id+'.png'}}"
+      width="59px"
+      height="38px"
+    />
+    <span>Connect account</span>
+  </div>
+  <div class="ic_connect_form_card_body">
+    <div class="ic_card_connect_form_insurer_list">
+      <div class="ic_connect_form_provider">
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+      </div>
+      <div class="ic_connect_form_btn_sync">
+        <button ng-click="onProceed('connect')" class="btn_connect">
+          Connect
+        </button>
+        <button ng-click="onProceed('cancel')" class="btn_cancel">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
