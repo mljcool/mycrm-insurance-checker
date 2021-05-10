@@ -8,6 +8,7 @@
   max-height: 370px;
   height: 100%;
   padding: 0 15px 0px 5px;
+  margin-bottom: 20px;
 }
 
 .ic_list_selections {
@@ -49,4 +50,11 @@
 
 .ic_card_cover_list {
   margin-bottom: 10px;
+}
+
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
 }

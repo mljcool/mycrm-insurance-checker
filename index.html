@@ -34,13 +34,17 @@
       </div>
       <!--END NAVBAR -->
 
-      <div class="page_render" ng-include="'pages/settings.html'"></div>
+      <div
+        ng-if="slideSettings"
+        class="page_render"
+        ng-include="'pages/settings.html'"
+      ></div>
 
-      <!-- <div
+      <div
         ng-if="!slideSettings"
         class="page_render"
         ng-include="'pages/insurance-list.html'"
-      ></div> -->
+      ></div>
     </div>
   </body>
 </html>
