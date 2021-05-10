@@ -58,3 +58,7 @@
   right: 8px;
   cursor: pointer;
 }
+
+.topright img:hover {
+  filter: invert(0.5);
+}
