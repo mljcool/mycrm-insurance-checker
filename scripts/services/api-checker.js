@@ -39,11 +39,11 @@ const getPreviousInsurances = (familyId) => {
   const url = insurancesURL(familyId, 'Previous');
   crmRequest(url).done(({ Succeeded, Data }) => {
     if (Succeeded) {
-      const insurancPrevious = mapClientsInsurance(Data);
+      const insurancePrevious = mapClientsInsurance(Data);
       setStorage({
-        insurancPrevious,
+        insurancePrevious,
       });
-      console.log('getPreviousInsurances API', insurancPrevious);
+      console.log('getPreviousInsurances API', insurancePrevious);
     }
   });
 };
@@ -52,11 +52,11 @@ const getInProgressInsurances = (familyId) => {
   const url = insurancesURL(familyId, 'In+Progress');
   crmRequest(url).done(({ Succeeded, Data }) => {
     if (Succeeded) {
-      const insurancInProgress = mapClientsInsurance(Data);
+      const insuranceInProgress = mapClientsInsurance(Data);
       setStorage({
-        insurancInProgress,
+        insuranceInProgress,
       });
-      console.log('getInProgressInsurances API', insurancInProgress);
+      console.log('getInProgressInsurances API', insuranceInProgress);
     }
   });
 };

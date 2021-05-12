@@ -1,12 +1,20 @@
-const getStoragesInsurances = () => {
+const getStoragesToMap = () => {
   return new Promise((resolve, reject) => {
     chrome.storage.local.get(
-      ['insurancExisting', 'insurancPrevious', 'insurancInProgress'],
+      [
+        'insuranceExisting',
+        'insurancePrevious',
+        'insuranceInProgress',
+        'clientInfo',
+      ],
       (results) => {
         if (chrome.runtime.lastError) {
           reject(chrome.runtime.lastError);
         } else {
-          resolve(results);
+          resolve({
+            success: true,
+            results,
+          });
         }
       },
     );

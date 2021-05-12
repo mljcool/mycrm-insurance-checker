@@ -83,8 +83,24 @@ app.controller('appCtrl', [
       apply();
     };
 
-    getStoragesInsurances().then((response) => {
-      console.log('getStoragesInsurances', response);
+    getStoragesToMap().then(({ success, results }) => {
+      if (success) {
+        const { clientInfo, insuranceInProgress } = results;
+        getClientAndBenefits(
+          { $scope, clientInfo },
+          'insuranceInProgress',
+          insuranceInProgress,
+        );
+        apply();
+        console.log('$scope.clientsAndBenefits', $scope.insuranceInProgress);
+      }
     });
+
+    $scope.dataDriller = (ownCover, personId) => {
+      const geBenefits = ownCover.filter(
+        (cover) => cover.familyClientID == personId,
+      ).length;
+      return geBenefits;
+    };
   },
 ]);

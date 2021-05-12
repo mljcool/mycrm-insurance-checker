@@ -1,10 +1,10 @@
 const triggerResyncOn = (client) => {
-  const { fname, lname } = client;
+  const { fullName } = client;
 
   const opt = {
     type: 'basic',
     title: 'Insuranc Checker Re-fetching ',
-    message: 'client data ' + fname + ' ' + lname,
+    message: 'client data ' + fullName,
     priority: 1,
     iconUrl: './icons/icon48.png',
   };

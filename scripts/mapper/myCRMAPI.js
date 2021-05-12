@@ -34,6 +34,7 @@ const mapClientsInsurance = (insuranceList = []) => {
       familyClientID: setKeys('FamilyClientID'),
       clientID: setKeys('ClientID'),
       benefitName: setKeys('BenefitName'),
+      benefitIcon: setWordForIcons(setKeys('BenefitName')),
       coverAmount: setKeys('CoverAmount'),
       firstName: setKeys('FirstName'),
       lastName: setKeys('LastName'),

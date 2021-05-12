@@ -31,3 +31,17 @@ const setInitials = (fname = '', lname = '') => {
   const setNames = strsFormat(fname) + '' + strsFormat(lname);
   return setNames;
 };
+
+const setWordForIcons = (str = '') => {
+  const setAll = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str.charAt(i) === str.charAt(i).toUpperCase()) {
+      setAll.push(str.charAt(i));
+    }
+  }
+
+  return setAll
+    .join('')
+    .replace(/\s/g, '')
+    .toLowerCase();
+};
