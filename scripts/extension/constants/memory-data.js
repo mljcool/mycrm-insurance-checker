@@ -147,6 +147,7 @@ const insurerList = [
     isConnected: true,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 3,
@@ -157,6 +158,7 @@ const insurerList = [
     isConnected: false,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 4,
@@ -167,6 +169,7 @@ const insurerList = [
     isConnected: true,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 5,
@@ -177,6 +180,7 @@ const insurerList = [
     isConnected: false,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 6,
@@ -187,6 +191,7 @@ const insurerList = [
     isConnected: false,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 8,
@@ -197,6 +202,7 @@ const insurerList = [
     isConnected: false,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 9,
@@ -207,6 +213,7 @@ const insurerList = [
     isConnected: false,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 10,
@@ -217,6 +224,7 @@ const insurerList = [
     isConnected: false,
     isSyncing: false,
     message: '',
+    name: '',
   },
   {
     id: 11,
@@ -227,5 +235,6 @@ const insurerList = [
     isConnected: false,
     isSyncing: false,
     message: '',
+    name: '',
   },
 ];

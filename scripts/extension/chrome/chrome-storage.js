@@ -6,6 +6,7 @@ const getStoragesToMap = () => {
         'insurancePrevious',
         'insuranceInProgress',
         'clientInfo',
+        'adviserData',
       ],
       (results) => {
         if (chrome.runtime.lastError) {

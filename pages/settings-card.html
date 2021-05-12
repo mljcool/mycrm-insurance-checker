@@ -24,7 +24,10 @@
             width="47px"
             height="28px"
           />
-          <span>James Punnett</span>
+          <span
+            >{{ insurer.name | limitTo: 10 }}{{insurer.name > 10 ? '...' :
+            '...'}}</span
+          >
           <span ng-if="insurer.isConnected">(Linked)</span>
         </div>
         <div class="ic_setting_btn_sync">

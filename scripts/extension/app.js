@@ -31,37 +31,7 @@ app.controller('appCtrl', [
       apply();
     };
 
-    $scope.onConnect = (data = {}) => {
-      $scope.switchSettings = !$scope.switchSettings;
-      $scope.selectedConnection = data;
-      console.log(`object`, $scope.switchSettings);
-      apply();
-    };
-
-    $scope.onProceed = (type) => {
-      if (type === 'cancel') {
-        $scope.onConnect();
-        return;
-      }
-      if (type === 'connect') {
-        toggleProcess({ $scope });
-        setTimeout(() => {
-          toggleProcess({ $scope });
-          apply();
-        }, 3500);
-        apply();
-        return;
-      }
-      if (type === 'disconnect') {
-        toggleProcess({ $scope });
-        setTimeout(() => {
-          toggleProcess({ $scope });
-          apply();
-        }, 3500);
-        apply();
-        return;
-      }
-    };
+    onConnectAccounts({ $scope, apply, getStoragesToMap });
 
     $scope.openViewComparison = (client) => {
       client.isSyncing = true;

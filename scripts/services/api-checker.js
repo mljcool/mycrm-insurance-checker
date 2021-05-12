@@ -79,15 +79,8 @@ const getClientInfo = (familyId) => {
 const getAdviserInfo = () => {
   crmRequest('GetUserInfo').done((response) => {
     const adviserData = mapAdviserInfo(response);
-    chrome.storage.local.get('adviserData', (items) => {
-      console.log('getAdviserInfo API', adviserData);
-      if (!!items.adviserData) {
-        if (items.adviserData.clientId !== setInfo.clientId) {
-          setStorage({
-            adviserData,
-          });
-        }
-      }
+    setStorage({
+      adviserData,
     });
   });
 };
