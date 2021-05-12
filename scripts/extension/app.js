@@ -42,12 +42,12 @@ app.controller('appCtrl', [
       }
     };
 
-    $scope.openViewComparison = () => {
-      toggleSync({ $scope });
+    $scope.openViewComparison = (client) => {
+      client.isSyncing = true;
       const insurance = { syncID: '' };
       setTimeout(() => {
         openComparisonWindow({ insurance });
-        toggleSync({ $scope });
+        client.isSyncing = false;
         apply();
       }, 3500);
       apply();

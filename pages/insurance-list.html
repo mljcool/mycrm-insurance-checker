@@ -45,14 +45,14 @@
             </div>
 
             <button
-              ng-if="!isSyncing"
-              ng-click="openViewComparison();"
+              ng-if="!client.isSyncing"
+              ng-click="openViewComparison(client);"
               class="ic_card_btn_sync"
             >
               View
             </button>
 
-            <div class="switch_container" ng-if="isSyncing">
+            <div class="switch_container" ng-if="client.isSyncing">
               <span class="loading-status">Syncing....</span>
               <div class="circleloader"></div>
             </div>
