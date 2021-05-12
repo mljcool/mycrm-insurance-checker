@@ -40,5 +40,10 @@ app.controller('appCtrl', [
         return;
       }
     };
+
+    $scope.openViewComparison = () => {
+      const insurance = { syncID: '' };
+      openComparisonWindow({ insurance });
+    };
   },
 ]);
