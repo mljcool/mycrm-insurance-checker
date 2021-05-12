@@ -1,16 +1,25 @@
 $(function() {
   let timerKill = null;
   timerKill = setTimeout(() => {
-    urlSPliter().then((response) => {
-      console.log('requestURL', response);
+    urlSPliter().then(({ success, familyId }) => {
+      if (success) {
+        getClientInfo(familyId);
+        getExistingInsurances(familyId);
+        getPreviousInsurances(familyId);
+        getInProgressInsurances(familyId);
+      }
     });
     clearTimeout(timerKill);
   }, 2500);
 });
 
 $(window).bind('hashchange', function() {
-  //code
-  urlSPliter().then((response) => {
-    console.log('requestURL', response);
+  urlSPliter().then(({ success, familyId }) => {
+    if (success) {
+      getClientInfo(familyId);
+      getExistingInsurances(familyId);
+      getPreviousInsurances(familyId);
+      getInProgressInsurances(familyId);
+    }
   });
 });

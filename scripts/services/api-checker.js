@@ -1,27 +1,9 @@
-const urlSPliter = () => {
-  return new Promise((resolve, reject) => {
-    const url = window.location.href;
-    const splitURL = url.split('/');
-    const isInContactPage =
-      splitURL.includes('contacts') && splitURL.length >= 5;
-    if (!!splitURL.length && isInContactPage) {
-      resolve({
-        success: true,
-        familyId: splitURL[6],
-      });
-    } else {
-      resolve({
-        success: false,
-        familyId: 0,
-      });
-    }
-  });
-};
+const baseURL = 'https://api.sit.mycrm.finance/';
 
 const crmRequest = (urlStr) => {
   const mytime = JSON.parse(localStorage.getItem('mycrm-tokens'));
   const settings = {
-    url: urlStr,
+    url: baseURL + urlStr,
     method: 'GET',
     timeout: 0,
     headers: {
@@ -29,4 +11,59 @@ const crmRequest = (urlStr) => {
     },
   };
   return $.ajax(settings);
+};
+
+const insurancesURL = (familyId, status) => {
+  const url =
+    'insurance-application?familyId=' +
+    familyId +
+    '&isFireAndGeneral=false&policyNumber=&providerId=0&status=' +
+    status;
+  return url;
+};
+
+const getExistingInsurances = (familyId) => {
+  const url = insurancesURL(familyId, 'Existing');
+  crmRequest(url).done(({ Succeeded, Data }) => {
+    if (Succeeded) {
+      // const insurances = mapClientsInsurance(Data);
+      // setClientInsuranceStorage(insurances.sort().reverse());
+      console.log('getExistingInsurances API', Data);
+    }
+  });
+};
+
+const getPreviousInsurances = (familyId) => {
+  const url = insurancesURL(familyId, 'Previous');
+  crmRequest(url).done(({ Succeeded, Data }) => {
+    if (Succeeded) {
+      // const insurances = mapClientsInsurance(Data);
+      // setClientInsuranceStorage(insurances.sort().reverse());
+      console.log('getPreviousInsurances API', Data);
+    }
+  });
+};
+
+const getInProgressInsurances = (familyId) => {
+  const url = insurancesURL(familyId, 'In+Progress');
+  crmRequest(url).done(({ Succeeded, Data }) => {
+    if (Succeeded) {
+      // const insurances = mapClientsInsurance(Data);
+      // setClientInsuranceStorage(insurances.sort().reverse());
+      console.log('getInProgressInsurances API', Data);
+    }
+  });
+};
+
+const getClientInfo = (familyId) => {
+  const url =
+    'contacts/ClientInformGet?familyId=' + familyId + '&clientId=null';
+
+  crmRequest(url).done((response) => {
+    if (!!response.length) {
+      // const clientInfo = mapClientsInfo(response.sort().reverse());
+      // setupClientInfoStorage(clientInfo);
+      console.log('getClientInfo API', response);
+    }
+  });
 };
