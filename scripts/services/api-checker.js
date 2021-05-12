@@ -26,11 +26,11 @@ const getExistingInsurances = (familyId) => {
   const url = insurancesURL(familyId, 'Existing');
   crmRequest(url).done(({ Succeeded, Data }) => {
     if (Succeeded) {
-      const insurancExisting = mapClientsInsurance(Data);
+      const insuranceExisting = mapClientsInsurance(Data);
       setStorage({
-        insurancExisting,
+        insuranceExisting,
       });
-      console.log('getExistingInsurances API', insurancExisting);
+      console.log('getExistingInsurances API', insuranceExisting);
     }
   });
 };

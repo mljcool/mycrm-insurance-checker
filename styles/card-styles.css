@@ -9,8 +9,7 @@
 }
 
 .ic_card_header {
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .ic_card_provider_details {
@@ -125,6 +124,25 @@
 }
 .ic_card_cover_amount {
   font-size: 13px;
+  color: #8d76a0;
+  font-weight: 500;
+}
+
+.insurance_details_list {
+  border-bottom: 1px solid #cccccc;
+}
+
+.ic_card_no_insurances_client {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background: #f4f1f8;
+  border-radius: 5px;
+  padding: 15px;
+}
+.ic_card_no_insurances_client span {
+  margin-left: 6px;
+  font-size: 14px;
   color: #8d76a0;
   font-weight: 500;
 }

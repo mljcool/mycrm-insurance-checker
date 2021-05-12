@@ -18,6 +18,7 @@ app.controller('appCtrl', [
 
     const apply = setApply({ $scope });
 
+    $scope.ifAnyHasData = false;
     $scope.isProcessing = false;
     $scope.slideSettings = false;
     $scope.switchSettings = false;
@@ -85,12 +86,24 @@ app.controller('appCtrl', [
 
     getStoragesToMap().then(({ success, results }) => {
       if (success) {
-        const { clientInfo, insuranceInProgress } = results;
-        getClientAndBenefits(
-          { $scope, clientInfo },
-          'insuranceInProgress',
+        const {
+          clientInfo,
           insuranceInProgress,
-        );
+          insurancePrevious,
+          insuranceExisting,
+        } = results;
+        const ifAnyHasData =
+          insuranceInProgress.length ||
+          insurancePrevious.length ||
+          insuranceExisting.length;
+        if (ifAnyHasData) {
+          getClientAndBenefits(
+            { $scope, clientInfo },
+            'insuranceInProgress',
+            insuranceInProgress,
+          );
+        }
+        $scope.ifAnyHasData = !ifAnyHasData;
         apply();
         console.log('$scope.clientsAndBenefits', $scope.insuranceInProgress);
       }

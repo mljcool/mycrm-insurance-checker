@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Insurance-Quote" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="IQ_mobile-Copy-3" transform="translate(-266.000000, -498.000000)" fill="#9A86A8">
+            <g id="Group-7" transform="translate(29.000000, 134.000000)">
+                <path d="M244,364 C240.13425,364 237,367.13425 237,371 C237,374.86575 240.13425,378 244,378 C247.86575,378 251,374.86575 251,371 C251,367.13425 247.86575,364 244,364 L244,364 Z M243,367.75 C243,367.337 243.338,367 243.75,367 L244.25,367 C244.662,367 245,367.337 245,367.75 L245,368.25 C245,368.662 244.662,369 244.25,369 L243.75,369 C243.338,369 243,368.662 243,368.25 L243,367.75 L243,367.75 Z M246,375 L242,375 L242,374.166667 L243,374.166667 L243,370.833333 L242,370.833333 L242,370 L245,370 L245,374.166667 L246,374.166667 L246,375 L246,375 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
