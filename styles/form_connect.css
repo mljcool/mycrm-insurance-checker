@@ -31,6 +31,14 @@
   align-items: center;
 }
 
+.sync_section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .ic_connect_form_btn_sync button {
   width: 100%;
   margin-top: 5px;
@@ -78,9 +86,14 @@ button:hover {
 .ic_connect_form_provider input {
   width: 100%;
   border-radius: 6px;
-  padding: 10px 9px;
-  border: 1px solid #cccccc;
+  padding: 15px 9px;
+  border: 1px solid #bdbdbd;
   margin-top: 10px;
+}
+input:focus {
+  outline: none !important;
+  border-color: #6bd6d8;
+  box-shadow: 0 0 10px #6bd6d8;
 }
 
 .ic_connect_status {

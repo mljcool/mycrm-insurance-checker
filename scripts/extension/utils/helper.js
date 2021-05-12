@@ -6,6 +6,6 @@ const setApply = ({ $scope }) => {
   };
 };
 
-const toggleSync = ({ $scope }) => {
-  $scope.isSyncing = !$scope.isSyncing;
+const toggleProcess = ({ $scope }) => {
+  $scope.isProcessing = !$scope.isProcessing;
 };

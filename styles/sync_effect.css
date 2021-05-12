@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.switch_container.is_block {
+  align-items: center !important;
+}
+
 .client_switch_container {
   display: none;
 }

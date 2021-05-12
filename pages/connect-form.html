@@ -31,10 +31,10 @@
           Last sync: 2 days ago.
         </div>
       </div>
-      <div class="ic_connect_form_btn_sync">
+      <div class="ic_connect_form_btn_sync" ng-if="!isProcessing">
         <button
           ng-if="selectedConnection.isConnected"
-          ng-click="onProceed('connect')"
+          ng-click="onProceed('disconnect')"
           class="btn_connect disconnect"
         >
           Disconnect
@@ -49,6 +49,17 @@
         <button ng-click="onProceed('cancel')" class="btn_cancel">
           Cancel
         </button>
+      </div>
+      <div class="sync_section" ng-if="isProcessing">
+        <div class="switch_container is_block">
+          <span class="loading-status" ng-if="selectedConnection.isConnected"
+            >Disconnecting....</span
+          >
+          <span class="loading-status" ng-if="!selectedConnection.isConnected"
+            >Connecting....</span
+          >
+          <div class="circleloader"></div>
+        </div>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ app.controller('appCtrl', [
   function($scope, $http) {
     const apply = setApply({ $scope });
 
-    $scope.isSyncing = false;
+    $scope.isProcessing = false;
     $scope.slideSettings = false;
     $scope.switchSettings = false;
     $scope.selectedConnection = {};
@@ -38,6 +38,24 @@ app.controller('appCtrl', [
     $scope.onProceed = (type) => {
       if (type === 'cancel') {
         $scope.onConnect();
+        return;
+      }
+      if (type === 'connect') {
+        toggleProcess({ $scope });
+        setTimeout(() => {
+          toggleProcess({ $scope });
+          apply();
+        }, 3500);
+        apply();
+        return;
+      }
+      if (type === 'disconnect') {
+        toggleProcess({ $scope });
+        setTimeout(() => {
+          toggleProcess({ $scope });
+          apply();
+        }, 3500);
+        apply();
         return;
       }
     };
