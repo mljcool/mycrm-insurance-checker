@@ -49,11 +49,11 @@ const mapClientsInsurance = (insuranceList = []) => {
     return {
       providerID: setKeys('ProviderID'),
       policyNumber: setKeys('PolicyNumber'),
-      policyNumberLimited:
-        (setKeys('PolicyNumber') || '').substr(0, 30) + '...',
+      policyNumberLimited: isLimitPolicy(data.PolicyNumber),
       providerName: setKeys('ProviderName'),
       statusName: setKeys('StatusName'),
       isApplication: setKeys('IsApplication'),
+      totalMonthlyPremiums: setKeys('TotalMonthlyPremiums'),
       benefitDetails: setKeys('BenefitDetails').map(benefitsMapper),
       message:
         'Seems your ' + setKeys('ProviderName') + ' account is not connected.',

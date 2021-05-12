@@ -51,20 +51,25 @@
                   />
                 </div>
                 <div class="ic_card_insurance_data">
-                  <span class="ic_card_policy">127317-01</span>
-                  <span class="ic_card_premium"> $180.01 Monthly</span>
+                  <span class="ic_card_policy">
+                    {{benefit.policyNumberLimited}}
+                  </span>
+                  <span class="ic_card_premium">
+                    {{benefit.totalMonthlyPremiums | currency : '$' : 2}}
+                    Monthly
+                  </span>
                 </div>
               </div>
 
               <button
-                ng-if="!client.isSyncing"
-                ng-click="openViewComparison(client);"
+                ng-if="!benefit.isSyncing"
+                ng-click="openViewComparison(benefit);"
                 class="ic_card_btn_sync"
               >
                 View
               </button>
 
-              <div class="switch_container" ng-if="client.isSyncing">
+              <div class="switch_container" ng-if="benefit.isSyncing">
                 <span class="loading-status">Syncing....</span>
                 <div class="circleloader"></div>
               </div>

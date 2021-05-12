@@ -45,3 +45,11 @@ const setWordForIcons = (str = '') => {
     .replace(/\s/g, '')
     .toLowerCase();
 };
+
+const isLimitPolicy = (policyNumber = '') => {
+  let policy = '-';
+  if (!!policyNumber) {
+    policy = (policyNumber || '').substr(0, 25) + '...';
+  }
+  return policy;
+};

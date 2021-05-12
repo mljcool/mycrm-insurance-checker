@@ -18,9 +18,8 @@ body {
 }
 
 #app_checker {
-  height: 100vh;
   background: white;
-  width: 390px;
+  width: 398px;
 }
 
 #ic_main_navbar {
