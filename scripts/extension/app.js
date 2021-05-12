@@ -16,6 +16,7 @@ app.controller('appCtrl', [
   function($scope, $http) {
     const apply = setApply({ $scope });
 
+    $scope.isSyncing = false;
     $scope.slideSettings = false;
     $scope.switchSettings = false;
     $scope.selectedConnection = {};
@@ -42,8 +43,14 @@ app.controller('appCtrl', [
     };
 
     $scope.openViewComparison = () => {
+      toggleSync({ $scope });
       const insurance = { syncID: '' };
-      openComparisonWindow({ insurance });
+      setTimeout(() => {
+        openComparisonWindow({ insurance });
+        toggleSync({ $scope });
+        apply();
+      }, 3500);
+      apply();
     };
   },
 ]);

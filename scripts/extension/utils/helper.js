@@ -5,3 +5,7 @@ const setApply = ({ $scope }) => {
     }, 200);
   };
 };
+
+const toggleSync = ({ $scope }) => {
+  $scope.isSyncing = !$scope.isSyncing;
+};

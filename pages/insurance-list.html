@@ -44,9 +44,18 @@
               </div>
             </div>
 
-            <button ng-click="openViewComparison();" class="ic_card_btn_sync">
+            <button
+              ng-if="!isSyncing"
+              ng-click="openViewComparison();"
+              class="ic_card_btn_sync"
+            >
               View
             </button>
+
+            <div class="switch_container" ng-if="isSyncing">
+              <span class="loading-status">Syncing....</span>
+              <div class="circleloader"></div>
+            </div>
           </div>
         </div>
       </div>
