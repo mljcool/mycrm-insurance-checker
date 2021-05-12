@@ -16,3 +16,7 @@ const urlSPliter = () => {
     }
   });
 };
+
+const setStorage = (props = {}) => {
+  chrome.storage.local.set(props);
+};

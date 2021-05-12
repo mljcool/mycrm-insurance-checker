@@ -82,5 +82,9 @@ app.controller('appCtrl', [
       }, 3500);
       apply();
     };
+
+    getStoragesInsurances().then((response) => {
+      console.log('getStoragesInsurances', response);
+    });
   },
 ]);
