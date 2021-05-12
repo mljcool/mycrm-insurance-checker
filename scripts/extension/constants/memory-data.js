@@ -5,6 +5,7 @@ const clientList = [
     lname: 'Beans',
     prefix: 'FB',
     isSyncing: false,
+    reSyncData: false,
     covers: [
       {
         id: 1,
@@ -72,6 +73,7 @@ const clientList = [
     lname: 'Sandoval',
     prefix: 'RS',
     isSyncing: false,
+    reSyncData: false,
     covers: [
       {
         id: 1,

@@ -70,5 +70,15 @@ app.controller('appCtrl', [
       }, 3500);
       apply();
     };
+
+    $scope.resyncClientData = (client) => {
+      client.reSyncData = true;
+      triggerResyncOn(client);
+      setTimeout(() => {
+        client.reSyncData = false;
+        apply();
+      }, 3500);
+      apply();
+    };
   },
 ]);

@@ -14,5 +14,5 @@
     "default_title": "Insurance Checker",
     "default_popup": "index.html"
   },
-  "permissions": ["activeTab"]
+  "permissions": ["activeTab", "notifications"]
 }

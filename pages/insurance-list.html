@@ -8,13 +8,14 @@
 
   <div id="ic_list_items">
     <div class="ic_card" ng-repeat="client in clientList track by $index">
-      <div class="topright">
+      <div class="topright" role="button" ng-click="resyncClientData(client)">
         <img
           src="./assets/sync.png"
           title="Re-sync data"
           alt="Re-sync data"
           width="19px"
           height="18px"
+          ng-class="{'is-resync': client.reSyncData}"
         />
       </div>
       <div class="ic_card_header">
