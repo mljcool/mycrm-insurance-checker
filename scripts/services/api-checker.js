@@ -26,9 +26,8 @@ const getExistingInsurances = (familyId) => {
   const url = insurancesURL(familyId, 'Existing');
   crmRequest(url).done(({ Succeeded, Data }) => {
     if (Succeeded) {
-      // const insurances = mapClientsInsurance(Data);
-      // setClientInsuranceStorage(insurances.sort().reverse());
-      console.log('getExistingInsurances API', Data);
+      const insurances = mapClientsInsurance(Data);
+      console.log('getExistingInsurances API', insurances);
     }
   });
 };
@@ -37,9 +36,8 @@ const getPreviousInsurances = (familyId) => {
   const url = insurancesURL(familyId, 'Previous');
   crmRequest(url).done(({ Succeeded, Data }) => {
     if (Succeeded) {
-      // const insurances = mapClientsInsurance(Data);
-      // setClientInsuranceStorage(insurances.sort().reverse());
-      console.log('getPreviousInsurances API', Data);
+      const insurances = mapClientsInsurance(Data);
+      console.log('getPreviousInsurances API', insurances);
     }
   });
 };
@@ -48,9 +46,8 @@ const getInProgressInsurances = (familyId) => {
   const url = insurancesURL(familyId, 'In+Progress');
   crmRequest(url).done(({ Succeeded, Data }) => {
     if (Succeeded) {
-      // const insurances = mapClientsInsurance(Data);
-      // setClientInsuranceStorage(insurances.sort().reverse());
-      console.log('getInProgressInsurances API', Data);
+      const insurances = mapClientsInsurance(Data);
+      console.log('getInProgressInsurances API', insurances);
     }
   });
 };
@@ -61,9 +58,8 @@ const getClientInfo = (familyId) => {
 
   crmRequest(url).done((response) => {
     if (!!response.length) {
-      // const clientInfo = mapClientsInfo(response.sort().reverse());
-      // setupClientInfoStorage(clientInfo);
-      console.log('getClientInfo API', response);
+      const clientInfo = mapClientsInfo(response.sort().reverse());
+      console.log('getClientInfo API', clientInfo);
     }
   });
 };

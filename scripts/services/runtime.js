@@ -2,8 +2,7 @@ const urlSPliter = () => {
   return new Promise((resolve, reject) => {
     const url = window.location.href;
     const splitURL = url.split('/');
-    const isInContactPage =
-      splitURL.includes('contacts') && splitURL.length >= 5;
+    const isInContactPage = !!splitURL.find((url) => url.includes('#'));
     if (!!splitURL.length && isInContactPage) {
       resolve({
         success: true,

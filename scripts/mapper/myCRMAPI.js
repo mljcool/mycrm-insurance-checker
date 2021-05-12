@@ -1,16 +1,3 @@
-const safeKeys = (data = {}) => {
-  return (keys) => {
-    const exist = (data || {}).hasOwnProperty(keys);
-    return exist ? data[keys] : null;
-  };
-};
-
-const setInitials = (fname = '', lname = '') => {
-  const strsFormat = (str) => (str || '').charAt(0).toUpperCase();
-  const setNames = strsFormat(fname) + '' + strsFormat(lname);
-  return setNames;
-};
-
 const mapClientsInfo = (clientList = []) => {
   const clientMapper = (data = {}) => {
     const setKeys = safeKeys(data);
@@ -32,6 +19,7 @@ const mapClientsInfo = (clientList = []) => {
         setKeys('Email') !== null
           ? safeKeys(setKeys('Email')[0])('EmailAddress')
           : null,
+      reSyncData: false,
     };
   };
 
@@ -50,8 +38,8 @@ const mapClientsInsurance = (insuranceList = []) => {
       firstName: setKeys('FirstName'),
       lastName: setKeys('LastName'),
       benefitTotalPremium: setKeys('BenefitTotalPremium'),
-      isSync: false,
       initialName: setInitials(setKeys('FirstName'), setKeys('LastName')),
+      isSyncing: false,
     };
   };
 
@@ -66,11 +54,11 @@ const mapClientsInsurance = (insuranceList = []) => {
       statusName: setKeys('StatusName'),
       isApplication: setKeys('IsApplication'),
       benefitDetails: setKeys('BenefitDetails').map(benefitsMapper),
-      isSync: false,
-      isConnected: false,
       message:
         'Seems your ' + setKeys('ProviderName') + ' account is not connected.',
       syncID: setSyncID(),
+      isSyncing: false,
+      isConnected: false,
     };
   };
 

@@ -20,6 +20,8 @@
       "matches": ["<all_urls>"],
       "js": [
         "./scripts/lib/jquery-3.6.0.min.js",
+        "./scripts/mapper/formatter.js",
+        "./scripts/mapper/myCRMAPI.js",
         "./scripts/services/runtime.js",
         "./scripts/services/api-checker.js",
         "./scripts/services/interceptors.js"
