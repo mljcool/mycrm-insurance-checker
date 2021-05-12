@@ -14,6 +14,8 @@ app.controller('appCtrl', [
   '$scope',
   '$http',
   function($scope, $http) {
+    setChromeIdentity();
+
     const apply = setApply({ $scope });
 
     $scope.isProcessing = false;
