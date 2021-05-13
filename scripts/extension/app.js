@@ -37,7 +37,7 @@ app.controller('appCtrl', [
       apply();
     };
     tabSwitcher({ $scope });
-    onConnectAccounts({ $scope, apply, getStoragesToMap });
+    onConnectAccounts({ $scope, apply, getStoragesToMap, $http });
 
     $scope.openViewComparison = (client) => {
       client.isSyncing = true;

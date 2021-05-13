@@ -9,13 +9,26 @@
     <span ng-if="selectedConnection.isConnected">Edit account</span>
   </div>
   <div class="ic_connect_form_card_body">
+    <div class="ic_connect_message" ng-if="selectedConnection.showMessage">
+      <img src="./assets/iconWarning.svg" width="22px" height="22px" />
+      <span>{{selectedConnection.message}}</span>
+    </div>
+
     <div class="ic_card_connect_form_insurer_list">
       <div
         class="ic_connect_form_provider"
         ng-if="!selectedConnection.isConnected"
       >
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="text"
+          ng-model="selectedConnection.username"
+          placeholder="Username"
+        />
+        <input
+          type="password"
+          ng-model="selectedConnection.password"
+          placeholder="Password"
+        />
       </div>
       <div class="ic_connect_status" ng-if="selectedConnection.isConnected">
         <div class="ic_card_name_label">
@@ -34,14 +47,14 @@
       <div class="ic_connect_form_btn_sync" ng-if="!isProcessing">
         <button
           ng-if="selectedConnection.isConnected"
-          ng-click="onProceed('disconnect')"
+          ng-click="onProceed('disconnect', selectedConnection)"
           class="btn_connect disconnect"
         >
           Disconnect
         </button>
         <button
           ng-if="!selectedConnection.isConnected"
-          ng-click="onProceed('connect')"
+          ng-click="onProceed('connect', selectedConnection)"
           class="btn_connect"
         >
           Connect

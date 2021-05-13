@@ -109,3 +109,18 @@ input:focus {
   font-weight: 500;
   color: #a0a0a0;
 }
+
+.ic_connect_message {
+  display: flex;
+  align-items: center;
+  background: #f4f1f8;
+  border-radius: 5px;
+  padding: 9px;
+  border-left: 1px solid #d0cdd4;
+}
+.ic_connect_message span {
+  margin-left: 6px;
+  font-size: 14px;
+  color: #8d76a0;
+  font-weight: 500;
+}

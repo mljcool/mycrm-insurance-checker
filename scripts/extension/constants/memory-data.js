@@ -144,10 +144,11 @@ const insurerList = [
     providerNameLowerCases: 'aia',
     username: '',
     password: '',
-    isConnected: true,
+    isConnected: false,
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 3,
@@ -159,6 +160,7 @@ const insurerList = [
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 4,
@@ -166,10 +168,11 @@ const insurerList = [
     providerNameLowerCases: 'asteron_life',
     username: '',
     password: '',
-    isConnected: true,
+    isConnected: false,
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 5,
@@ -181,6 +184,7 @@ const insurerList = [
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 6,
@@ -192,6 +196,7 @@ const insurerList = [
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 8,
@@ -203,6 +208,7 @@ const insurerList = [
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 9,
@@ -214,6 +220,7 @@ const insurerList = [
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 10,
@@ -225,6 +232,7 @@ const insurerList = [
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
   {
     id: 11,
@@ -236,5 +244,6 @@ const insurerList = [
     isSyncing: false,
     message: '',
     name: '',
+    showMessage: false,
   },
 ];
