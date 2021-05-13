@@ -23,6 +23,16 @@ const getClientInfo = (familyId) => {
       setStorage({
         clientInfo,
       });
+
+      chrome.storage.local.get(['clientInfo'], (results) => {
+        if (!!results.clientInfo) {
+          chrome.runtime.sendMessage('', {
+            type: 'alert',
+            notificationId: 'ON',
+          });
+        }
+      });
+
       console.log('getClientInfo API', clientInfo);
     }
   });
