@@ -7,10 +7,28 @@
     />
     <span ng-if="!selectedConnection.isConnected">Connect account</span>
     <span ng-if="selectedConnection.isConnected">Edit account</span>
+    <img
+      ng-if="selectedConnection.isConnected"
+      src="./assets/smileColored.svg"
+      class="icon_connection"
+      width="22px"
+      height="22px"
+    />
   </div>
   <div class="ic_connect_form_card_body">
     <div class="ic_connect_message" ng-if="selectedConnection.showMessage">
-      <img src="./assets/iconWarning.svg" width="22px" height="22px" />
+      <img
+        ng-if="selectedConnection.connectError === 1"
+        src="./assets/iconWarning.svg"
+        width="22px"
+        height="22px"
+      />
+      <img
+        ng-if="selectedConnection.connectError === 2"
+        src="./assets/leftNotStartedIcon.svg"
+        width="25px"
+        height="25px"
+      />
       <span>{{selectedConnection.message}}</span>
     </div>
 

@@ -124,3 +124,7 @@ input:focus {
   color: #8d76a0;
   font-weight: 500;
 }
+
+.icon_connection {
+  margin-left: auto;
+}

@@ -25,7 +25,7 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
 
       getConnectToProvider({ $http, browserId }).then(({ status, data }) => {
         if (status === 200) {
-          console.log('getConnectToProvider', results);
+          console.log('getConnectToProvider', data);
           $scope.insurerList = $scope.insurerList.map((inurances) => {
             inurances.isConnected = data.some(
               (ins) => ins.insurerId === inurances.id,
@@ -38,11 +38,23 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
     }
   });
 
+  const somethingWentWrong = ({ selectedConnection }) => {
+    selectedConnection.showMessage = true;
+    selectedConnection.connectError = 1;
+    selectedConnection.message =
+      'Please make sure to provide username or password';
+    $scope.$apply();
+  };
+
   const resetForms = ({ selectedConnection }) => {
     selectedConnection.showMessage = false;
     selectedConnection.message = '';
     selectedConnection.username = '';
     selectedConnection.password = '';
+    setTimeout(() => {
+      toggleProcess({ $scope });
+      $scope.$apply();
+    }, 200);
   };
 
   $scope.onProceed = (type, selectedConnection = {}) => {
@@ -58,10 +70,7 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
         }
         if (type === 'connect') {
           if (!username || !password) {
-            selectedConnection.showMessage = true;
-            selectedConnection.message =
-              'Please make sure to provide username or password';
-            $scope.$apply();
+            somethingWentWrong({ selectedConnection });
             return;
           }
           const details = {
@@ -71,21 +80,26 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
             insurerId: id,
             browserId: chromeId,
           };
+          toggleProcess({ $scope });
           postConnectToProvider({ $http, details }).then(
             (success) => {
-              console.log('SUCCESS', success);
               resetForms({ selectedConnection });
+              if (!success.data) {
+                selectedConnection.showMessage = true;
+                selectedConnection.connectError = 2;
+                selectedConnection.message = 'Oops! Something went wrong.';
+
+                return;
+              }
+              console.log('SUCCESS', success);
+              selectedConnection.isConnected = true;
             },
             (error) => {
               console.log('ERROR', error);
-              resetForms({ selectedConnection });
+              selectedConnection.showMessage = true;
+              selectedConnection.message = error;
             },
           );
-          toggleProcess({ $scope });
-          setTimeout(() => {
-            toggleProcess({ $scope });
-            $scope.$apply();
-          }, 3500);
 
           $scope.$apply();
           return;
