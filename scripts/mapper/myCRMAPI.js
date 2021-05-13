@@ -54,6 +54,7 @@ const mapClientsInsurance = (insuranceList = []) => {
       statusName: setKeys('StatusName'),
       isApplication: setKeys('IsApplication'),
       totalMonthlyPremiums: setKeys('TotalMonthlyPremiums'),
+      totalPolicyFee: setKeys('TotalPolicyFee'),
       benefitDetails: setKeys('BenefitDetails').map(benefitsMapper),
       message:
         'Seems your ' + setKeys('ProviderName') + ' account is not connected.',

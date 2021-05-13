@@ -33,7 +33,7 @@
         </div>
         <div
           class="insurance_details_list"
-          ng-repeat="benefit in client.myBenefits track by $index"
+          ng-repeat="benefit in client.myBenefits | orderBy: reverse:true track by $index"
         >
           <div class="ic_card_benefit_details">
             <span class="ic_card_fnd">
@@ -55,8 +55,7 @@
                     {{benefit.policyNumberLimited}}
                   </span>
                   <span class="ic_card_premium">
-                    {{benefit.totalMonthlyPremiums | currency : '$' : 2}}
-                    Monthly
+                    {{benefit.totalPolicyFee | currency : '$' : 2}} Monthly
                   </span>
                 </div>
               </div>

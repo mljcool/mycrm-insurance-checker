@@ -31,7 +31,5 @@ const getClientAndBenefits = (
   scopeType,
   insuranceType,
 ) => {
-  $scope[scopeType] = arrangedClientBenefits(clientInfo, insuranceType)
-    .sort()
-    .reverse();
+  $scope[scopeType] = arrangedClientBenefits(clientInfo, insuranceType);
 };
