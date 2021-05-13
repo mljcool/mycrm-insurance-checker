@@ -5,7 +5,7 @@
       ng-repeat="tab in tabsList track by $index"
       ng-class="{'active': tab.isActive}"
       ng-click="switchTabs(tab)"
-      >{{tab.tabName}} <span>(2)</span></a
+      >{{tab.tabName}} <span>({{tab.total}})</span></a
     >
   </div>
 

@@ -46,3 +46,28 @@ const tabSwitcher = ({ $scope }) => {
     });
   };
 };
+
+const countEachTabs = ({ $scope }) => {
+  $scope.tabsList = $scope.tabsList.map((tab) => {
+    if (tab.tabId === 1) {
+      const totalLength =
+        $scope.insuranceInProgress.length +
+        $scope.insurancePrevious.length +
+        $scope.insuranceExisting.length;
+      tab.total = totalLength;
+    }
+
+    if (tab.tabId === 2) {
+      const totalLength = $scope.insuranceInProgress.length;
+      tab.total = totalLength;
+    }
+
+    if (tab.tabId === 3) {
+      const totalLength =
+        $scope.insurancePrevious.length + $scope.insuranceExisting.length;
+      tab.total = totalLength;
+    }
+
+    return tab;
+  });
+};

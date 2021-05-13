@@ -18,6 +18,10 @@ app.controller('appCtrl', [
 
     const apply = setApply({ $scope });
 
+    $scope.insuranceInProgress = [];
+    $scope.insurancePrevious = [];
+    $scope.insuranceExisting = [];
+
     $scope.ifAnyHasData = false;
     $scope.isProcessing = false;
     $scope.slideSettings = false;
@@ -90,6 +94,7 @@ app.controller('appCtrl', [
           );
         }
         $scope.ifAnyHasData = !ifAnyHasData;
+        countEachTabs({ $scope });
         apply();
         console.log('$scope.insuranceInProgress', $scope.insuranceInProgress);
         console.log('$scope.insurancePrevious', $scope.insurancePrevious);
