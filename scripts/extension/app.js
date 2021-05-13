@@ -23,6 +23,8 @@ app.controller('appCtrl', [
     $scope.slideSettings = false;
     $scope.switchSettings = false;
     $scope.selectedConnection = {};
+    $scope.tabsList = tabsList;
+    $scope.tabPresent = 1;
     $scope.insurerList = insurerList;
     $scope.clientList = clientList;
 
@@ -30,7 +32,7 @@ app.controller('appCtrl', [
       $scope.slideSettings = !$scope.slideSettings;
       apply();
     };
-
+    tabSwitcher({ $scope });
     onConnectAccounts({ $scope, apply, getStoragesToMap });
 
     $scope.openViewComparison = (client) => {
@@ -66,16 +68,32 @@ app.controller('appCtrl', [
           insuranceInProgress.length ||
           insurancePrevious.length ||
           insuranceExisting.length;
-        if (ifAnyHasData) {
+        if (insuranceInProgress.length) {
           getClientAndBenefits(
             { $scope, clientInfo },
             'insuranceInProgress',
             insuranceInProgress,
           );
         }
+        if (insurancePrevious.length) {
+          getClientAndBenefits(
+            { $scope, clientInfo },
+            'insurancePrevious',
+            insurancePrevious,
+          );
+        }
+        if (insuranceExisting.length) {
+          getClientAndBenefits(
+            { $scope, clientInfo },
+            'insuranceExisting',
+            insuranceExisting,
+          );
+        }
         $scope.ifAnyHasData = !ifAnyHasData;
         apply();
-        console.log('$scope.clientsAndBenefits', $scope.insuranceInProgress);
+        console.log('$scope.insuranceInProgress', $scope.insuranceInProgress);
+        console.log('$scope.insurancePrevious', $scope.insurancePrevious);
+        console.log('$scope.insuranceExisting', $scope.insuranceExisting);
       }
     });
 

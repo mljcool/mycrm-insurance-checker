@@ -1,4 +1,7 @@
-const baseURL = 'https://api.loanmarket.com.au/';
+// const baseURL = 'https://api.loanmarket.com.au/; prodURL
+// const baseURL = 'https://api.nzfsg.co.nz/'; prodURL
+// const baseURL = 'https://api.sit.mycrm.finance/'; SIT URL
+const baseURL = 'https://api.nzfsg.co.nz/';
 
 const crmRequest = (urlStr) => {
   const mytime = JSON.parse(localStorage.getItem('mycrm-tokens'));

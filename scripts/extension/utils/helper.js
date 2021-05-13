@@ -33,3 +33,16 @@ const getClientAndBenefits = (
 ) => {
   $scope[scopeType] = arrangedClientBenefits(clientInfo, insuranceType);
 };
+
+const tabSwitcher = ({ $scope }) => {
+  $scope.switchTabs = (tab) => {
+    $scope.tabsList.forEach((element) => {
+      if (element.tabId !== tab.tabId) {
+        element.isActive = false;
+      } else {
+        element.isActive = true;
+        $scope.tabPresent = tab.tabId;
+      }
+    });
+  };
+};
