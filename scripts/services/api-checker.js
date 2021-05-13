@@ -16,54 +16,6 @@ const crmRequest = (urlStr) => {
   return $.ajax(settings);
 };
 
-const insurancesURL = (familyId, status) => {
-  const url =
-    'insurance-application?familyId=' +
-    familyId +
-    '&isFireAndGeneral=false&policyNumber=&providerId=0&status=' +
-    status;
-  return url;
-};
-
-const getExistingInsurances = (familyId) => {
-  const url = insurancesURL(familyId, 'Existing');
-  crmRequest(url).done(({ Succeeded, Data }) => {
-    if (Succeeded) {
-      const insuranceExisting = mapClientsInsurance(Data);
-      setStorage({
-        insuranceExisting,
-      });
-      console.log('getExistingInsurances API', insuranceExisting);
-    }
-  });
-};
-
-const getPreviousInsurances = (familyId) => {
-  const url = insurancesURL(familyId, 'Previous');
-  crmRequest(url).done(({ Succeeded, Data }) => {
-    if (Succeeded) {
-      const insurancePrevious = mapClientsInsurance(Data);
-      setStorage({
-        insurancePrevious,
-      });
-      console.log('getPreviousInsurances API', insurancePrevious);
-    }
-  });
-};
-
-const getInProgressInsurances = (familyId) => {
-  const url = insurancesURL(familyId, 'In+Progress');
-  crmRequest(url).done(({ Succeeded, Data }) => {
-    if (Succeeded) {
-      const insuranceInProgress = mapClientsInsurance(Data);
-      setStorage({
-        insuranceInProgress,
-      });
-      console.log('getInProgressInsurances API', insuranceInProgress);
-    }
-  });
-};
-
 const getClientInfo = (familyId) => {
   const url =
     'contacts/ClientInformGet?familyId=' + familyId + '&clientId=null';

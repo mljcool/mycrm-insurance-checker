@@ -3,9 +3,6 @@ $(function() {
     urlSPliter().then(({ success, familyId }) => {
       if (success) {
         getClientInfo(familyId);
-        getExistingInsurances(familyId);
-        getPreviousInsurances(familyId);
-        getInProgressInsurances(familyId);
         getAdviserInfo();
       }
     });
@@ -16,9 +13,6 @@ $(window).bind('hashchange', function() {
   urlSPliter().then(({ success, familyId }) => {
     if (success) {
       getClientInfo(familyId);
-      getExistingInsurances(familyId);
-      getPreviousInsurances(familyId);
-      getInProgressInsurances(familyId);
       getAdviserInfo();
     }
   });
