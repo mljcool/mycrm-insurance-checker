@@ -18,9 +18,7 @@ app.controller('appCtrl', [
 
     const apply = setApply({ $scope });
 
-    $scope.insuranceInProgress = [];
-    $scope.insurancePrevious = [];
-    $scope.insuranceExisting = [];
+    $scope.insuranceListScraping = sampleResponse;
 
     $scope.ifAnyHasData = false;
     $scope.isProcessing = false;
@@ -31,6 +29,11 @@ app.controller('appCtrl', [
     $scope.tabPresent = 1;
     $scope.insurerList = insurerList;
     $scope.clientList = clientList;
+
+    $scope.openViewLink = (link) => {
+      console.log(link);
+      window.open(link, '_blank').focus();
+    };
 
     $scope.showSettings = () => {
       $scope.slideSettings = !$scope.slideSettings;
@@ -62,51 +65,13 @@ app.controller('appCtrl', [
 
     getStoragesToMap().then(({ success, results }) => {
       if (success) {
-        const {
-          clientInfo,
-          insuranceInProgress,
-          insurancePrevious,
-          insuranceExisting,
-        } = results;
-        const ifAnyHasData =
-          insuranceInProgress.length ||
-          insurancePrevious.length ||
-          insuranceExisting.length;
-        if (insuranceInProgress.length) {
-          getClientAndBenefits(
-            { $scope, clientInfo },
-            'insuranceInProgress',
-            insuranceInProgress,
-          );
+        const { clientInfo } = results;
+        if (clientInfo.length) {
         }
-        if (insurancePrevious.length) {
-          getClientAndBenefits(
-            { $scope, clientInfo },
-            'insurancePrevious',
-            insurancePrevious,
-          );
-        }
-        if (insuranceExisting.length) {
-          getClientAndBenefits(
-            { $scope, clientInfo },
-            'insuranceExisting',
-            insuranceExisting,
-          );
-        }
-        $scope.ifAnyHasData = !ifAnyHasData;
-        countEachTabs({ $scope });
+        // EachTabs({ $scope });
         apply();
         console.log('$scope.insuranceInProgress', $scope.insuranceInProgress);
-        console.log('$scope.insurancePrevious', $scope.insurancePrevious);
-        console.log('$scope.insuranceExisting', $scope.insuranceExisting);
       }
     });
-
-    $scope.dataDriller = (ownCover, personId) => {
-      const geBenefits = ownCover.filter(
-        (cover) => cover.familyClientID == personId,
-      ).length;
-      return geBenefits;
-    };
   },
 ]);

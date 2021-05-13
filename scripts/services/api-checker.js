@@ -1,12 +1,12 @@
-// const baseURL = 'https://api.loanmarket.com.au/; prodURL
-// const baseURL = 'https://api.nzfsg.co.nz/'; prodURL
-// const baseURL = 'https://api.sit.mycrm.finance/'; SIT URL
-const baseURL = 'https://api.nzfsg.co.nz/';
+// const crmBaseURL = 'https://api.loanmarket.com.au/; prodURL
+// const crmBaseURL = 'https://api.nzfsg.co.nz/'; prodURL
+// const crmBaseURL = 'https://api.sit.mycrm.finance/'; SIT URL
+const crmBaseURL = 'https://api.nzfsg.co.nz/';
 
 const crmRequest = (urlStr) => {
   const mytime = JSON.parse(localStorage.getItem('mycrm-tokens'));
   const settings = {
-    url: baseURL + urlStr,
+    url: crmBaseURL + urlStr,
     method: 'GET',
     timeout: 0,
     headers: {
@@ -17,10 +17,7 @@ const crmRequest = (urlStr) => {
 };
 
 const getClientInfo = (familyId) => {
-  const url =
-    'contacts/ClientInformGet?familyId=' + familyId + '&clientId=null';
-
-  crmRequest(url).done((response) => {
+  crmRequest(urlClientMyCRM(familyId)).done((response) => {
     if (!!response.length) {
       const clientInfo = mapClientsInfo(response.sort().reverse());
       setStorage({

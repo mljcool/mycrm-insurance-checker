@@ -1,4 +1,7 @@
-<div class="ic_card" ng-repeat="client in insuranceExisting track by $index">
+<div
+  class="ic_card"
+  ng-repeat="client in insuranceListScraping track by $index"
+>
   <div class="topright" role="button" ng-click="resyncClientData(client)">
     <img
       src="./assets/sync.png"
@@ -12,72 +15,57 @@
   <div class="ic_card_header">
     <div class="ic_card_name_label">
       <div class="ic_card_avatar">
-        {{client.initialName}}
+        AJ
       </div>
       <div class="ic_card_labels">
         <span class="ic_card_ins"> Insured Person</span>
-        <span class="ic_card_name"> {{client.fullName}} </span>
+        <span class="ic_card_name"> {{client.name}} </span>
       </div>
     </div>
+    <span class="ic_card_fnd">
+      Insurance Checker found 1 benefits from 1 Insurer
+    </span>
     <div
       class="insurance_details_list"
-      ng-repeat="benefit in client.myBenefits | orderBy: reverse:true track by $index"
+      ng-repeat="policy in client.policies  track by $index"
     >
       <div class="ic_card_benefit_details">
-        <span class="ic_card_fnd">
-          Insurance Checker found {{dataDriller(benefit.benefitDetails,
-          client.personId)}} benefits from 1 Insurer
-        </span>
-
         <div class="ic_card_provider_details">
           <div class="ic_card_inner_info">
             <div class="ic_card_insurer_logo">
-              <img
-                src="./assets/insurers/{{benefit.providerID}}.png"
-                width="65px"
-                height="35px"
-              />
+              <img src="./assets/insurers/1.png" width="65px" height="35px" />
             </div>
             <div class="ic_card_insurance_data">
               <span class="ic_card_policy">
-                {{benefit.policyNumberLimited}}
+                {{policy.policyNumber}}
               </span>
               <span class="ic_card_premium">
-                {{benefit.totalPolicyFee | currency : '$' : 2}} Monthly
+                {{ 222222 | currency : '$' : 2}} Monthly
               </span>
             </div>
           </div>
 
           <button
-            ng-if="!benefit.isSyncing"
-            ng-click="openViewComparison(benefit);"
+            ng-click="openViewLink(policy.link);"
             class="ic_card_btn_sync"
           >
             View
           </button>
-
-          <div class="switch_container" ng-if="benefit.isSyncing">
-            <span class="loading-status">Syncing....</span>
-            <div class="circleloader"></div>
-          </div>
         </div>
       </div>
       <div class="ic_card_body">
-        <div class="cover_body" ng-repeat="cover in benefit.benefitDetails">
-          <div
-            class="ic_card_cover_list"
-            ng-if="cover.familyClientID === client.personId || cover.clientID === client.personId"
-          >
+        <div class="cover_body" ng-repeat="cover in policy.products">
+          <div class="ic_card_cover_list">
             <div class="ic_card_cover_label">
               <img
-                ng-src="{{'./assets/benefit_icons/'+cover.benefitIcon+'.svg'}}"
+                ng-src="{{'./assets/benefit_icons/'+cover.productName+'.svg'}}"
                 width="18px"
                 height="18px"
               />
-              <span>{{ cover.benefitName}}</span>
+              <span>{{ cover.productName}}</span>
             </div>
             <div class="ic_card_cover_amount">
-              {{ cover.coverAmount | currency : '$' : 2}}
+              {{ cover.amount }}
             </div>
           </div>
         </div>

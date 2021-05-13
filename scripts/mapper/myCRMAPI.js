@@ -12,7 +12,7 @@ const mapClientsInfo = (clientList = []) => {
       isPrimary: setKeys('isPrimary'),
       gender: setKeys('Gender'),
       initialName: setInitials(setKeys('FirstName'), setKeys('LastName')),
-      dateOfBirth: !setKeys('DateOfBirth')
+      birthday: !setKeys('DateOfBirth')
         ? null
         : getFormattedDate(new Date(setKeys('DateOfBirth'))),
       email:

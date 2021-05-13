@@ -21,3 +21,38 @@ const urlSPliter = () => {
 const setStorage = (props = {}) => {
   chrome.storage.local.set(props);
 };
+
+const urlClientMyCRM = (familyId = '') => {
+  return 'contacts/ClientInformGet?familyId=' + familyId + '&clientId=null';
+};
+
+/**
+ * extension scraping APIS
+ * code block
+ */
+
+const baseIpAddress = '3.24.21.76';
+const baseURL = 'http://' + baseIpAddress + '/';
+
+const setupSettingSearch = (payload = []) => {
+  return $.ajax({
+    url: baseURL + 'insurer/search-clients',
+    method: 'GET',
+    timeout: 0,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: JSON.stringify(payload),
+  });
+};
+
+const getAllConnectedProviders = (browserId = '') => {
+  return $.ajax({
+    url: baseURL + '/setup/get-credential?browserId=' + browserId,
+    method: 'GET',
+    timeout: 0,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};

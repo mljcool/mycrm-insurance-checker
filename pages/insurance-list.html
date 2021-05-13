@@ -10,33 +10,7 @@
   </div>
 
   <div id="ic_list_items">
-    <div ng-if="tabPresent === 1">
-      <div ng-include="'pages/list-inprogress.html'"></div>
-      <div ng-include="'pages/list-existing.html'"></div>
-      <div ng-include="'pages/list-previous.html'"></div>
-    </div>
-    <div
-      ng-if="tabPresent === 2"
-      ng-include="'pages/list-inprogress.html'"
-    ></div>
-    <div ng-if="tabPresent === 3" ng-include="'pages/list-existing.html'"></div>
-    <div ng-if="tabPresent === 3" ng-include="'pages/list-previous.html'"></div>
-
-    <div
-      ng-if="tabPresent === 2 && !insuranceInProgress.length"
-      class="ic_card_no_insurances_client"
-    >
-      <img src="./assets/entityIcon.svg" />
-      <span>seems there is no Inprogress insurance for this client</span>
-    </div>
-
-    <div
-      ng-if="tabPresent === 3 && !insuranceExisting.length && !insurancePrevious.length"
-      class="ic_card_no_insurances_client"
-    >
-      <img src="./assets/entityIcon.svg" />
-      <span>seems there is Cancelled insurance for this client</span>
-    </div>
+    <div ng-include="'pages/listing.html'"></div>
 
     <div ng-if="ifAnyHasData" class="ic_card_no_insurances_client">
       <img src="./assets/entityIcon.svg" />
