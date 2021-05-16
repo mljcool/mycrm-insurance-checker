@@ -1,33 +1,33 @@
 .ic_card {
-  position: relative;
-  background: #f4f1f8;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  padding: 15px;
-  /* box-shadow: -1px 1px 1px rgb(156 156 156 / 16%),
+   position: relative;
+   background: #f4f1f8;
+   border-radius: 5px;
+   margin-bottom: 1rem;
+   padding: 15px;
+   /* box-shadow: -1px 1px 1px rgb(156 156 156 / 16%),
     -1px 3px 3px rgb(79 78 78 / 23%); */
 }
 
 .ic_card_header {
-  padding-bottom: 8px;
+   padding-bottom: 8px;
 }
 
 .ic_card_provider_details {
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 10px;
+   border-bottom: 1px solid #cccccc;
+   padding-bottom: 10px;
 }
 
 .ic_card_avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #8d76a0;
-  height: 50px;
-  width: 50px;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   background: #8d76a0;
+   height: 50px;
+   width: 50px;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
 }
 
 .ic_card_name_label,
@@ -35,115 +35,141 @@
 .ic_card_provider_details,
 .ic_card_insurance_data,
 .ic_card_inner_info {
-  display: flex;
+   display: flex;
 }
 
 .ic_card_benefit_details {
-  margin-top: 1.4rem;
+   margin-top: 1.4rem;
 }
 .ic_card_provider_details {
-  margin-top: 1.5rem;
-  justify-content: space-between;
+   margin-top: 1.5rem;
+   justify-content: space-between;
 }
 
 .ic_card_name_label {
-  align-items: center;
-  margin-bottom: 1rem;
+   align-items: center;
+   margin-bottom: 1rem;
 }
 
 .ic_card_labels,
 .ic_card_insurance_data {
-  margin-left: 8px;
-  flex-direction: column;
+   margin-left: 8px;
+   flex-direction: column;
 }
 
 .ic_card_ins {
-  font-size: 12px;
-  color: #8d76a0;
-  font-weight: 400;
+   font-size: 12px;
+   color: #8d76a0;
+   font-weight: 400;
 }
 .ic_card_name {
-  font-weight: bold;
-  font-size: 18px;
-  color: #8d76a0;
+   font-weight: bold;
+   font-size: 18px;
+   color: #8d76a0;
 }
 
 .ic_card_policy {
-  font-size: 13px;
-  color: #8d76a0;
-  font-weight: 400;
-  white-space: nowrap;
+   font-size: 13px;
+   color: #8d76a0;
+   font-weight: 400;
+   white-space: nowrap;
 }
 
 .ic_card_premium {
-  font-weight: bold;
-  color: #8d76a0;
-  font-size: 15px;
-  padding-top: 2px;
-  white-space: nowrap;
+   font-weight: bold;
+   color: #8d76a0;
+   font-size: 15px;
+   padding-top: 2px;
+   white-space: nowrap;
 }
 
 .ic_card_btn_sync {
-  border: 0;
-  background: #44b3b4;
-  color: #fff;
-  border-radius: 5px;
-  padding: 5px 10px;
-  height: fit-content;
-  cursor: pointer;
-  padding: 8px 15px;
-  margin: 0;
+   border: 0;
+   background: #44b3b4;
+   color: #fff;
+   border-radius: 5px;
+   padding: 5px 10px;
+   height: fit-content;
+   cursor: pointer;
+   padding: 8px 15px;
+   margin: 0;
 }
 
 .ic_card_fnd {
-  font-size: 13px;
-  color: #8d76a0;
-  font-weight: 500;
-  white-space: nowrap;
+   font-size: 13px;
+   color: #8d76a0;
+   font-weight: 500;
+   white-space: nowrap;
 }
 
 .ic_card_body {
-  margin-top: 1.5rem;
+   margin-top: 1.5rem;
 }
 
 .ic_card_cover_list {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   white-space: nowrap;
 }
 
 .ic_card_cover_label {
-  display: flex;
-  align-items: center;
+   display: flex;
+   align-items: center;
 }
 .ic_card_cover_label span {
-  font-size: 13px;
-  color: #8d76a0;
-  font-weight: 500;
-  margin-left: 5px;
+   font-size: 13px;
+   color: #8d76a0;
+   font-weight: 500;
+   margin-left: 5px;
 }
 .ic_card_cover_amount {
-  font-size: 13px;
-  color: #8d76a0;
-  font-weight: 500;
+   font-size: 13px;
+   color: #8d76a0;
+   font-weight: 500;
 }
 
 .insurance_details_list {
-  border-bottom: 1px solid #cccccc;
+   border-bottom: 1px solid #cccccc;
 }
 
 .ic_card_no_insurances_client {
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  background: #f4f1f8;
-  border-radius: 5px;
-  padding: 15px;
+   justify-content: center;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   background: #f4f1f8;
+   border-radius: 5px;
+   padding: 15px;
 }
-.ic_card_no_insurances_client span {
-  margin-left: 6px;
-  font-size: 14px;
-  color: #8d76a0;
-  font-weight: 500;
+
+.warning_header {
+   justify-content: center;
+   display: flex;
+   align-items: center;
+   background: #f4f1f8;
+   border-radius: 5px;
+   padding: 15px;
+}
+.warning_header span {
+   margin-left: 6px;
+   font-size: 14px;
+   color: #8d76a0;
+   font-weight: 500;
+}
+
+.warning_code_block {
+   word-wrap: break-word;
+   display: block;
+   padding: 10px 8px;
+   background: #d5d5d5;
+   border-radius: 6px;
+   width: 100%;
+}
+.warning_code_block:not(:first-child) {
+   margin-top: 5px;
+}
+pre {
+   word-wrap: break-word;
+   display: block;
 }

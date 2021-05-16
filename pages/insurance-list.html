@@ -1,21 +1,38 @@
 <!--START LIST NAVIGATION -->
 <div id="ic_list_container">
-  <div class="ic_list_selections">
-    <a
-      ng-repeat="tab in tabsList track by $index"
-      ng-class="{'active': tab.isActive}"
-      ng-click="switchTabs(tab)"
-      >{{tab.tabName}} <span>({{tab.total}})</span></a
-    >
-  </div>
+   <div class="ic_list_selections">
+      <a
+         ng-repeat="tab in tabsList track by $index"
+         ng-class="{'active': tab.isActive}"
+         ng-click="switchTabs(tab)"
+         >{{tab.tabName}} <span>({{tab.total}})</span></a
+      >
+   </div>
 
-  <div id="ic_list_items">
-    <div ng-include="'pages/listing.html'"></div>
+   <div id="ic_list_items">
+      <div ng-include="'pages/listing.html'" ng-if="!hasError"></div>
 
-    <div ng-if="ifAnyHasData" class="ic_card_no_insurances_client">
-      <img src="./assets/entityIcon.svg" />
-      <span>seems there is no insurance for this client</span>
-    </div>
-  </div>
+      <div
+         ng-if="ifAnyHasData && !hasError"
+         class="ic_card_no_insurances_client"
+      >
+         <img src="./assets/entityIcon.svg" />
+         <span>seems there is no insurance for this client</span>
+      </div>
+
+      <div ng-if="hasError" class="ic_card_no_insurances_client">
+         <div class="warning_header">
+            <img src="./assets/sadEmoji.svg" width="100px" height="80px" />
+            <span>oops! we're sorry having trouble accessing providers</span>
+         </div>
+         <div
+            class="warning_code_block"
+            ng-repeat="error in errorObj track by $index"
+         >
+            <pre>status code:{{error.StatusCode}}</pre>
+            <pre>message:{{error.Message}}</pre>
+         </div>
+      </div>
+   </div>
 </div>
 <!--END LIST NAVIGATION -->

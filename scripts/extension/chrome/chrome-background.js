@@ -5,94 +5,118 @@ const myHeaders = new Headers();
 myHeaders.append('Content-Type', 'application/json');
 
 const getAllConnections = (browserId = '') => {
-  return fetch(baseURLScrape + 'setup/get-credential?browserId=' + browserId, {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow',
-  }).then((response) => response.json());
+   return fetch(baseURLScrape + 'setup/get-credential?browserId=' + browserId, {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+   }).then((response) => response.json());
 };
 
 const startScraping = (data = []) => {
-  var raw = JSON.stringify(data);
+   var raw = JSON.stringify(data);
 
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow',
-  };
+   var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+   };
 
-  return fetch(baseURLScrape + 'insurer/search-clients', requestOptions).then(
-    (response) => response.json(),
-  );
+   return fetch(baseURLScrape + 'insurer/search-clients', requestOptions).then(
+      (response) => response.json(),
+   );
 };
 
 const getStoragesToMap = () => {
-  return new Promise((resolve, reject) => {
-    chrome.storage.local.get(['clientInfo'], (results) => {
-      if (chrome.runtime.lastError) {
-        reject(chrome.runtime.lastError);
-      } else {
-        resolve({
-          success: true,
-          results,
-        });
-      }
-    });
-  });
+   return new Promise((resolve, reject) => {
+      chrome.storage.local.get(['clientInfo'], (results) => {
+         if (chrome.runtime.lastError) {
+            reject(chrome.runtime.lastError);
+         } else {
+            resolve({
+               success: true,
+               results,
+            });
+         }
+      });
+   });
 };
 
 const settter = (connnections, clients, chromeId) => {
-  return new Promise((resolve, reject) => {
-    Promise.all([connnections(chromeId), clients()]).then((response) => {
-      resolve(response);
-    }, reject);
-  });
+   return new Promise((resolve, reject) => {
+      Promise.all([connnections(chromeId), clients()]).then((response) => {
+         resolve(response);
+      }, reject);
+   });
 };
 
 const doneSetting = (connections = [], clients = {}, chromeId) => {
-  const allSet = [];
-  return new Promise((resolve) => {
-    connections.forEach((provider, index) => {
-      clients.results.clientInfo.forEach((client) => {
-        const newSet = {
-          birthday: client.birthday,
-          firstName: client.firstName,
-          fullName: client.fullName,
-          browserId: chromeId,
-          insurerName: (provider.insurerName || '').toLowerCase(),
-        };
-        allSet.push(newSet);
+   const allSet = [];
+   return new Promise((resolve) => {
+      connections.forEach((provider, index) => {
+         clients.results.clientInfo.forEach((client) => {
+            const newSet = {
+               birthday: client.birthday,
+               firstName: client.firstName,
+               fullName: client.fullName,
+               browserId: chromeId,
+               insurerName: (provider.insurerName || '').toLowerCase(),
+            };
+            allSet.push(newSet);
+         });
+         if (index === connections.length - 1) {
+            resolve(allSet);
+         }
       });
-      if (index === connections.length - 1) {
-        resolve(allSet);
-      }
-    });
-  });
+   });
+};
+
+const setStorage = (props = {}) => {
+   chrome.storage.local.set(props);
 };
 
 chrome.runtime.onMessage.addListener((data) => {
-  if (data.type === 'notification') {
-    chrome.notifications.create(data.notificationId, data.options);
-  }
+   if (data.type === 'notification') {
+      chrome.notifications.create(data.notificationId, data.options);
+   }
 
-  if (data.type === 'alert') {
-    chrome.storage.local.get(['chromeId'], ({ chromeId }) => {
-      if (!!chromeId) {
-        settter(getAllConnections, getStoragesToMap, chromeId).then(
-          ([connections, clients]) => {
-            if (!!connections.length && clients.success) {
-              doneSetting(connections, clients, chromeId).then((response) => {
-                if (response.length) {
-                  startScraping(response).then((results) => {
-                    console.log('results from scraping', results);
-                  });
-                }
-              });
-            }
-          },
-        );
-      }
-    });
-  }
+   if (data.type === 'alert') {
+      chrome.storage.local.get(['chromeId'], ({ chromeId }) => {
+         if (!!chromeId) {
+            settter(getAllConnections, getStoragesToMap, chromeId).then(
+               ([connections, clients]) => {
+                  if (!!connections.length && clients.success) {
+                     doneSetting(connections, clients, chromeId).then(
+                        (_connection_response) => {
+                           console.log('response', _connection_response);
+                           if (_connection_response.length) {
+                              let pushErrors = [];
+                              _connection_response.forEach((clientsSet) => {
+                                 startScraping([clientsSet]).then((_scrape) => {
+                                    if (_scrape.StatusCode === 500) {
+                                       pushErrors.push(_scrape);
+                                       setStorage({
+                                          errorStatus: {
+                                             hasError: true,
+                                             dataError: JSON.stringify(
+                                                pushErrors,
+                                             ),
+                                          },
+                                       });
+                                    }
+                                    console.log(
+                                       'results from _scrape',
+                                       _scrape,
+                                    );
+                                 });
+                              });
+                           }
+                        },
+                     );
+                  }
+               },
+            );
+         }
+      });
+   }
 });
