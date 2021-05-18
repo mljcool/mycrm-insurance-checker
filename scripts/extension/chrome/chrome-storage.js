@@ -9,6 +9,7 @@ const getStoragesToMap = () => {
             'adviserData',
             'chromeId',
             'errorStatus',
+            'result_from_scrape',
          ],
          (results) => {
             if (chrome.runtime.lastError) {

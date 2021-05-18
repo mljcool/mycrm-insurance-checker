@@ -65,20 +65,33 @@ app.controller('appCtrl', [
          apply();
       };
 
+      $scope.setInitials = (fullName = '') => {
+         const nameSplit = fullName.split(' ');
+         const strsFormat = (str) => (str || '').charAt(0).toUpperCase();
+         const setNames =
+            strsFormat(nameSplit[0]) + '' + strsFormat(nameSplit[1]);
+         return setNames;
+      };
+
       getStoragesToMap().then(({ success, results }) => {
          if (success) {
-            const { clientInfo, errorStatus } = results;
+            const { clientInfo, errorStatus, result_from_scrape } = results;
             if (clientInfo.length) {
             }
             // EachTabs({ $scope });
 
-            if ('hasError' in errorStatus) {
+            if (result_from_scrape.length && !!result_from_scrape) {
+               $scope.insuranceListScraping = result_from_scrape;
+            }
+
+            if (!!errorStatus) {
                const { hasError, dataError } = errorStatus;
 
                $scope.hasError = hasError;
                $scope.errorObj = JSON.parse(dataError);
                console.log('$scope.insuranceInProgress', $scope.errorObj);
             }
+            console.log('result_from_scrape', result_from_scrape);
 
             apply();
 

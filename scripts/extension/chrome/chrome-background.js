@@ -56,11 +56,11 @@ const doneSetting = (connections = [], clients = {}, chromeId) => {
       connections.forEach((provider, index) => {
          clients.results.clientInfo.forEach((client) => {
             const newSet = {
-               birthday: client.birthday,
-               firstName: client.firstName,
-               fullName: client.fullName,
-               browserId: chromeId,
-               insurerName: (provider.insurerName || '').toLowerCase(),
+               Birthday: client.birthday,
+               FirstName: client.firstName,
+               LastName: client.lastName,
+               BrowserId: chromeId,
+               InsurerName: (provider.insurerName || '').toLowerCase(),
             };
             allSet.push(newSet);
          });
@@ -83,6 +83,9 @@ chrome.runtime.onMessage.addListener((data) => {
    if (data.type === 'alert') {
       chrome.storage.local.get(['chromeId'], ({ chromeId }) => {
          if (!!chromeId) {
+            setStorage({
+               errorStatus: null,
+            });
             settter(getAllConnections, getStoragesToMap, chromeId).then(
                ([connections, clients]) => {
                   if (!!connections.length && clients.success) {
@@ -91,9 +94,13 @@ chrome.runtime.onMessage.addListener((data) => {
                            console.log('response', _connection_response);
                            if (_connection_response.length) {
                               let pushErrors = [];
+                              let clientInsurances = [];
                               _connection_response.forEach((clientsSet) => {
                                  startScraping([clientsSet]).then((_scrape) => {
-                                    if (_scrape.StatusCode === 500) {
+                                    if (
+                                       _scrape.StatusCode === 500 &&
+                                       !!_scrape.StatusCode
+                                    ) {
                                        pushErrors.push(_scrape);
                                        setStorage({
                                           errorStatus: {
@@ -103,11 +110,17 @@ chrome.runtime.onMessage.addListener((data) => {
                                              ),
                                           },
                                        });
+                                    } else {
+                                       clientInsurances.push(_scrape[0]);
+                                       setStorage({
+                                          result_from_scrape: clientInsurances,
+                                       });
+
+                                       console.log(
+                                          'results from _scrape',
+                                          _scrape,
+                                       );
                                     }
-                                    console.log(
-                                       'results from _scrape',
-                                       _scrape,
-                                    );
                                  });
                               });
                            }

@@ -1,75 +1,79 @@
 <div
-  class="ic_card"
-  ng-repeat="client in insuranceListScraping track by $index"
+   class="ic_card"
+   ng-repeat="client in insuranceListScraping track by $index"
 >
-  <div class="topright" role="button" ng-click="resyncClientData(client)">
-    <img
-      src="./assets/sync.png"
-      title="Re-sync data"
-      alt="Re-sync data"
-      width="19px"
-      height="18px"
-      ng-class="{'is-resync': client.reSyncData}"
-    />
-  </div>
-  <div class="ic_card_header">
-    <div class="ic_card_name_label">
-      <div class="ic_card_avatar">
-        AJ
+   <div class="topright" role="button" ng-click="resyncClientData(client)">
+      <img
+         src="./assets/sync.png"
+         title="Re-sync data"
+         alt="Re-sync data"
+         width="19px"
+         height="18px"
+         ng-class="{'is-resync': client.reSyncData}"
+      />
+   </div>
+   <div class="ic_card_header">
+      <div class="ic_card_name_label">
+         <div class="ic_card_avatar">
+            {{setInitials(client.name)}}
+         </div>
+         <div class="ic_card_labels">
+            <span class="ic_card_ins"> Insured Person</span>
+            <span class="ic_card_name"> {{client.name}} </span>
+         </div>
       </div>
-      <div class="ic_card_labels">
-        <span class="ic_card_ins"> Insured Person</span>
-        <span class="ic_card_name"> {{client.name}} </span>
-      </div>
-    </div>
-    <span class="ic_card_fnd">
-      Insurance Checker found 1 benefits from 1 Insurer
-    </span>
-    <div
-      class="insurance_details_list"
-      ng-repeat="policy in client.policies  track by $index"
-    >
-      <div class="ic_card_benefit_details">
-        <div class="ic_card_provider_details">
-          <div class="ic_card_inner_info">
-            <div class="ic_card_insurer_logo">
-              <img src="./assets/insurers/1.png" width="65px" height="35px" />
-            </div>
-            <div class="ic_card_insurance_data">
-              <span class="ic_card_policy">
-                {{policy.policyNumber}}
-              </span>
-              <span class="ic_card_premium">
-                {{ 222222 | currency : '$' : 2}} Monthly
-              </span>
-            </div>
-          </div>
+      <span class="ic_card_fnd">
+         Insurance Checker found 1 benefits from 1 Insurer
+      </span>
+      <div
+         class="insurance_details_list"
+         ng-repeat="policy in client.policies  track by $index"
+      >
+         <div class="ic_card_benefit_details">
+            <div class="ic_card_provider_details">
+               <div class="ic_card_inner_info">
+                  <div class="ic_card_insurer_logo">
+                     <img
+                        ng-src="{{'./assets/insurers/'+client.insurerId+'.png'}}"
+                        width="65px"
+                        height="35px"
+                     />
+                  </div>
+                  <div class="ic_card_insurance_data">
+                     <span class="ic_card_policy">
+                        {{policy.policyNumber}}
+                     </span>
+                     <span class="ic_card_premium">
+                        {{ 222222 | currency : '$' : 2}} Monthly
+                     </span>
+                  </div>
+               </div>
 
-          <button
-            ng-click="openViewLink(policy.link);"
-            class="ic_card_btn_sync"
-          >
-            View
-          </button>
-        </div>
-      </div>
-      <div class="ic_card_body">
-        <div class="cover_body" ng-repeat="cover in policy.products">
-          <div class="ic_card_cover_list">
-            <div class="ic_card_cover_label">
-              <img
-                ng-src="{{'./assets/benefit_icons/'+cover.productName+'.svg'}}"
-                width="18px"
-                height="18px"
-              />
-              <span>{{ cover.productName}}</span>
+               <button
+                  ng-click="openViewLink(policy.link);"
+                  class="ic_card_btn_sync"
+               >
+                  View
+               </button>
             </div>
-            <div class="ic_card_cover_amount">
-              {{ cover.amount }}
+         </div>
+         <div class="ic_card_body">
+            <div class="cover_body" ng-repeat="cover in policy.products">
+               <div class="ic_card_cover_list">
+                  <div class="ic_card_cover_label">
+                     <img
+                        ng-src="{{'./assets/benefit_icons/'+cover.productName+'.svg'}}"
+                        width="18px"
+                        height="18px"
+                     />
+                     <span>{{ cover.productName}}</span>
+                  </div>
+                  <div class="ic_card_cover_amount">
+                     {{ cover.amount }}
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
