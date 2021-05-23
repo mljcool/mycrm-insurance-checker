@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!--START LIST NAVIGATION -->
 <div id="ic_list_container">
    <div class="ic_list_selections">
@@ -10,7 +12,10 @@
    </div>
 
    <div id="ic_list_items">
-      <div ng-include="'pages/listing.html'"></div>
+      <div
+         ng-include="'pages/listing.html'"
+         ng-if="!!insuranceListScraping.length"
+      ></div>
 
       <div
          ng-if="ifAnyHasData && !hasError"
@@ -21,6 +26,24 @@
       </div>
 
       <div ng-if="hasError" class="ic_card_no_insurances_client">
+         <div
+            class="topright error_retry_again"
+            role="button"
+            ng-click="resyncClientData(client)"
+         >
+            <div class="message_retry">
+               Would you like to retry again?
+            </div>
+
+            <img
+               src="./assets/sync.png"
+               title="Re-try again"
+               alt="Re-try again"
+               width="19px"
+               height="18px"
+               ng-class="{'is-resync': client.reSyncData}"
+            />
+         </div>
          <div class="warning_header">
             <img src="./assets/sadEmoji.svg" width="100px" height="80px" />
             <span>oops! we're sorry having trouble accessing providers</span>
@@ -28,9 +51,13 @@
          <div
             class="warning_code_block"
             ng-repeat="error in errorObj track by $index"
+            ng-if="!!error.StatusCode"
          >
-            <pre>status code:{{error.StatusCode}}</pre>
-            <pre>message:{{error.Message}}</pre>
+            <p>
+               <span>status code:{{error.StatusCode}}</span>
+               <br />
+               <span>message:{{error.Message}}</span>
+            </p>
          </div>
       </div>
    </div>

@@ -134,6 +134,7 @@
 }
 
 .ic_card_no_insurances_client {
+   position: relative;
    justify-content: center;
    display: flex;
    flex-direction: column;
@@ -141,6 +142,31 @@
    background: #f4f1f8;
    border-radius: 5px;
    padding: 15px;
+}
+.error_retry_again {
+   display: flex;
+   align-items: center;
+   margin-left: 2px;
+}
+.message_retry {
+   margin-right: 4px;
+   background: #c4bace;
+   padding: 5px 4px;
+   border-radius: 5px;
+   position: relative;
+}
+.message_retry:after {
+   content: '';
+   position: absolute;
+   display: block;
+   width: 0;
+   z-index: 1;
+   border-style: solid;
+   border-color: transparent #c4bace;
+   border-width: 6px 0 6px 6px;
+   top: 50%;
+   right: -6px;
+   margin-top: -6px;
 }
 
 .warning_header {
@@ -169,7 +195,7 @@
 .warning_code_block:not(:first-child) {
    margin-top: 5px;
 }
-pre {
-   word-wrap: break-word;
-   display: block;
+.warning_code_block p {
+   font-size: 11px;
+   color: #454545;
 }

@@ -1,37 +1,43 @@
 {
-  "manifest_version": 2,
-  "name": "Insurance Checker Production",
-  "version": "1.0.0",
-  "description": "This extension will check Insurances for clients",
-  "author": "Mark Gocela",
-  "icons": {
-    "128": "./icons/icon128.png",
-    "48": "./icons/icon48.png",
-    "16": "./icons/icon16.png"
-  },
-  "browser_action": {
-    "default_icon": "./icons/icon128.png",
-    "default_title": "Insurance Checker",
-    "default_popup": "index.html"
-  },
+   "manifest_version": 2,
+   "name": "Insurance Checker Production",
+   "version": "1.0.0",
+   "description": "This extension will check Insurances for clients",
+   "author": "Mark Gocela",
+   "icons": {
+      "128": "./icons/icon128.png",
+      "48": "./icons/icon48.png",
+      "16": "./icons/icon16.png"
+   },
+   "browser_action": {
+      "default_icon": "./icons/icon128.png",
+      "default_title": "Insurance Checker",
+      "default_popup": "index.html"
+   },
 
-  "permissions": ["storage", "unlimitedStorage", "activeTab", "notifications"],
-  "background": {
-    "scripts": ["./scripts/extension/chrome/chrome-background.js"],
-    "persistent": false
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": [
-        "./scripts/lib/jquery-3.6.0.min.js",
-        "./scripts/mapper/formatter.js",
-        "./scripts/mapper/myCRMAPI.js",
-        "./scripts/services/runtime.js",
-        "./scripts/services/api-checker.js",
-        "./scripts/services/interceptors.js"
+   "permissions": ["storage", "unlimitedStorage", "activeTab", "notifications"],
+   "background": {
+      "scripts": [
+         "./scripts/extension/chrome/backgrounds/api.js",
+         "./scripts/extension/chrome/backgrounds/storages.js",
+         "./scripts/extension/chrome/backgrounds/functions.js",
+         "./scripts/extension/chrome/backgrounds/notifications.js",
+         "./scripts/extension/chrome/backgrounds/runtime.js"
       ],
-      "run_at": "document_start"
-    }
-  ]
+      "persistent": false
+   },
+   "content_scripts": [
+      {
+         "matches": ["<all_urls>"],
+         "js": [
+            "./scripts/lib/jquery-3.6.0.min.js",
+            "./scripts/mapper/formatter.js",
+            "./scripts/mapper/myCRMAPI.js",
+            "./scripts/services/runtime.js",
+            "./scripts/services/api-checker.js",
+            "./scripts/services/interceptors.js"
+         ],
+         "run_at": "document_start"
+      }
+   ]
 }

@@ -1,3 +1,5 @@
+/** @format */
+
 const triggerResyncOn = (client) => {
    const { fullName } = client;
 

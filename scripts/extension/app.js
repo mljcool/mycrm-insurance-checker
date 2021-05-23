@@ -18,7 +18,7 @@ app.controller('appCtrl', [
 
       const apply = setApply({ $scope });
 
-      $scope.insuranceListScraping = sampleResponse;
+      $scope.insuranceListScraping = [];
 
       $scope.hasError = false;
       $scope.errorObj = false;
@@ -66,6 +66,10 @@ app.controller('appCtrl', [
       };
 
       $scope.setInitials = (fullName = '') => {
+         // console.log('fullname', fullName);
+         if (!fullName) {
+            return '';
+         }
          const nameSplit = fullName.split(' ');
          const strsFormat = (str) => (str || '').charAt(0).toUpperCase();
          const setNames =
@@ -82,6 +86,8 @@ app.controller('appCtrl', [
 
             if (result_from_scrape.length && !!result_from_scrape) {
                $scope.insuranceListScraping = result_from_scrape;
+            } else {
+               $scope.insuranceListScraping = [];
             }
 
             if (!!errorStatus) {
