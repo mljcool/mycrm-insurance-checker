@@ -20,6 +20,7 @@ app.controller('appCtrl', [
 
       $scope.insuranceListScraping = [];
 
+      $scope.triggerRerun = false;
       $scope.hasError = false;
       $scope.errorObj = false;
       $scope.ifAnyHasData = false;
@@ -62,6 +63,20 @@ app.controller('appCtrl', [
             client.reSyncData = false;
             apply();
          }, 3500);
+         apply();
+      };
+
+      $scope.reRunScraping = () => {
+         chrome.runtime.sendMessage('', {
+            type: 're-scraping',
+         });
+         $scope.triggerRerun = true;
+         chrome.runtime.onMessage.addListener((data) => {
+            if (data.type === 'stop') {
+               $scope.triggerRerun = false;
+               apply();
+            }
+         });
          apply();
       };
 

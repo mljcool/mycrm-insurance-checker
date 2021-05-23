@@ -1,4 +1,11 @@
 /** @format */
+const stopRunning = () => {
+   setTimeout(() => {
+      chrome.runtime.sendMessage('', {
+         type: 'stop',
+      });
+   }, 1000);
+};
 
 const setPromisesConnections = (resp) => {
    const { success, results } = resp;
@@ -30,6 +37,7 @@ const getEachScraping = (allSet = []) => {
                   },
                });
             }
+            stopRunning();
          });
       });
    }

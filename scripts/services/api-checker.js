@@ -29,8 +29,7 @@ const getClientInfo = (familyId) => {
          chrome.storage.local.get(['clientInfo'], (results) => {
             if (!!results.clientInfo) {
                chrome.runtime.sendMessage('', {
-                  type: 'alert',
-                  notificationId: 'ON',
+                  type: 'scraping',
                });
             }
          });
@@ -46,6 +45,15 @@ const getAdviserInfo = () => {
       setStorage({
          adviserData,
       });
+   });
+};
+
+const interceptMyCRM = () => {
+   urlSPliter().then(({ success, familyId }) => {
+      if (success) {
+         getClientInfo(familyId);
+         getAdviserInfo();
+      }
    });
 };
 

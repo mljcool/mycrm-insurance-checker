@@ -143,13 +143,19 @@
    border-radius: 5px;
    padding: 15px;
 }
+.is_rerunning {
+   min-height: 217px;
+   height: 100%;
+}
 .error_retry_again {
+   width: 80%;
    display: flex;
    align-items: center;
    margin-left: 2px;
+   justify-content: flex-end;
 }
 .message_retry {
-   margin-right: 4px;
+   margin-right: 14px;
    background: #c4bace;
    padding: 5px 4px;
    border-radius: 5px;

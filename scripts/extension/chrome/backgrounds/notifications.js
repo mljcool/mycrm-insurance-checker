@@ -1,22 +1,34 @@
 /** @format */
 
-const createErrorNotifications = (message) => {
-   const opt = {
+const notificationFormat = (message) => {
+   return {
       type: 'basic',
-      title: 'Insuranc Checker ',
-      message: 'running some issues with ' + message,
+      title: 'Insurance Checker ',
+      message,
       priority: 1,
       iconUrl: './icons/icon48.png',
    };
-   chrome.notifications.create('error', opt, (id) => {
-      clearErrorNotifications();
+};
+
+const createErrorNotifications = (msgParam) => {
+   const message = 'running some issues with ' + msgParam;
+   chrome.notifications.create('error', notificationFormat(message), (id) => {
+      clearNotifications();
    });
 };
 
-const clearErrorNotifications = () => {
+const clearNotifications = () => {
    let mySetTimeout = null;
    mySetTimeout = setTimeout(() => {
-      chrome.notifications.clear('ON', (status) => {});
+      chrome.notifications.clear('error', (status) => {});
+      chrome.notifications.clear('running', (status) => {});
       clearTimeout(mySetTimeout);
    }, 3000);
+};
+
+const createRunningNotifications = (msgParam) => {
+   const message = msgParam;
+   chrome.notifications.create('running', notificationFormat(message), (id) => {
+      clearNotifications();
+   });
 };

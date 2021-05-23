@@ -25,14 +25,21 @@
          <span>seems there is no insurance for this client</span>
       </div>
 
-      <div ng-if="hasError" class="ic_card_no_insurances_client">
+      <div
+         ng-if="hasError"
+         class="ic_card_no_insurances_client"
+         ng-class="{'is_rerunning': triggerRerun}"
+      >
          <div
             class="topright error_retry_again"
             role="button"
-            ng-click="resyncClientData(client)"
+            ng-click="reRunScraping()"
          >
-            <div class="message_retry">
+            <div class="message_retry" ng-if="!triggerRerun">
                Would you like to retry again?
+            </div>
+            <div class="message_retry" ng-if="triggerRerun">
+               Please wait rerunning services.
             </div>
 
             <img
@@ -41,17 +48,17 @@
                alt="Re-try again"
                width="19px"
                height="18px"
-               ng-class="{'is-resync': client.reSyncData}"
+               ng-class="{'is-resync': triggerRerun}"
             />
          </div>
-         <div class="warning_header">
+         <div class="warning_header" ng-if="!triggerRerun">
             <img src="./assets/sadEmoji.svg" width="100px" height="80px" />
             <span>oops! we're sorry having trouble accessing providers</span>
          </div>
          <div
             class="warning_code_block"
             ng-repeat="error in errorObj track by $index"
-            ng-if="!!error.StatusCode"
+            ng-if="!!error.StatusCode && !triggerRerun"
          >
             <p>
                <span>status code:{{error.StatusCode}}</span>
