@@ -64,7 +64,6 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
             const { chromeId, adviserData } = results;
             const { username, password, providerName, id } =
                selectedConnection || {};
-            console.log('chromeId', chromeId);
             if (type === 'cancel') {
                $scope.onConnect();
                return;
@@ -85,7 +84,6 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
                   firstName: adviserData.firstName,
                   lastName: adviserData.lastName,
                };
-               console.log('ACCESS_TYPE', ACCESS_TYPE);
                toggleProcess({ $scope });
                postConnectToProvider({ $http, details }).then(
                   (success) => {

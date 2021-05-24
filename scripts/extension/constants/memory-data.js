@@ -246,6 +246,18 @@ const insurerList = [
       name: '',
       showMessage: false,
    },
+   {
+      id: 12,
+      providerName: 'Sovereign',
+      providerNameLowerCases: 'sovereign',
+      username: '',
+      password: '',
+      isConnected: false,
+      isSyncing: false,
+      message: '',
+      name: '',
+      showMessage: false,
+   },
 ];
 
 const sampleResponse = [
