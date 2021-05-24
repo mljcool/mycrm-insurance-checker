@@ -9,7 +9,7 @@ const setDefaultsValues = () => {
       errorStatus: null,
    });
    setStorage({
-      result_from_scrape: [],
+      dataScrapted: [],
    });
 };
 

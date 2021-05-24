@@ -15,7 +15,15 @@
       "default_popup": "index.html"
    },
 
-   "permissions": ["storage", "unlimitedStorage", "activeTab", "notifications"],
+   "permissions": [
+      "storage",
+      "unlimitedStorage",
+      "activeTab",
+      "notifications",
+      "https://mycrm.nzfsg.co.nz/*",
+      "https://mycrm.nzfsg.co.nz/*",
+      "http://3.24.21.76/"
+   ],
    "background": {
       "scripts": [
          "./scripts/extension/chrome/backgrounds/api.js",
@@ -28,7 +36,11 @@
    },
    "content_scripts": [
       {
-         "matches": ["<all_urls>"],
+         "matches": [
+            "https://mycrm.nzfsg.co.nz/*",
+            "https://mycrm.nzfsg.co.nz/*",
+            "http://3.24.21.76/"
+         ],
          "js": [
             "./scripts/lib/jquery-3.6.0.min.js",
             "./scripts/mapper/formatter.js",

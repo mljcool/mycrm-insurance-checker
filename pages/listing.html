@@ -15,11 +15,13 @@
    <div class="ic_card_header">
       <div class="ic_card_name_label">
          <div class="ic_card_avatar">
-            {{setInitials(client.name)}}
+            {{client.firstName[0]}} {{client.lastName[0]}}
          </div>
          <div class="ic_card_labels">
             <span class="ic_card_ins"> Insured Person</span>
-            <span class="ic_card_name"> {{client.name}} </span>
+            <span class="ic_card_name">
+               {{client.firstName}} {{client.lastName}}
+            </span>
          </div>
       </div>
       <span class="ic_card_fnd">
@@ -44,7 +46,7 @@
                         {{policy.policyNumber}}
                      </span>
                      <span class="ic_card_premium">
-                        {{ 222222 | currency : '$' : 2}} Monthly
+                        {{ policy.premium }} {{ policy.frequency}}
                      </span>
                   </div>
                </div>
@@ -62,7 +64,7 @@
                <div class="ic_card_cover_list">
                   <div class="ic_card_cover_label">
                      <img
-                        ng-src="{{'./assets/benefit_icons/'+cover.productName+'.svg'}}"
+                        ng-src="{{'./assets/benefit_icons/'+removeSpaces(cover.productName)+'.svg'}}"
                         width="18px"
                         height="18px"
                      />

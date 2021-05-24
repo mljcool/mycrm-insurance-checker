@@ -92,15 +92,19 @@ app.controller('appCtrl', [
          return setNames;
       };
 
+      $scope.removeSpaces = (textLogo = '') => {
+         return removeSpaces(textLogo);
+      };
+
       getStoragesToMap().then(({ success, results }) => {
          if (success) {
-            const { clientInfo, errorStatus, result_from_scrape } = results;
+            const { clientInfo, errorStatus, dataScrapted } = results;
             if (clientInfo.length) {
             }
             // EachTabs({ $scope });
 
-            if (result_from_scrape.length && !!result_from_scrape) {
-               $scope.insuranceListScraping = result_from_scrape;
+            if (dataScrapted.length && !!dataScrapted) {
+               $scope.insuranceListScraping = dataScrapted;
             } else {
                $scope.insuranceListScraping = [];
             }
@@ -112,7 +116,7 @@ app.controller('appCtrl', [
                $scope.errorObj = JSON.parse(dataError);
                console.log('$scope.insuranceInProgress', $scope.errorObj);
             }
-            console.log('result_from_scrape', result_from_scrape);
+            console.log('dataScrapted', dataScrapted);
 
             apply();
 
