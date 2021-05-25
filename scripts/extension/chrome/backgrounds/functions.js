@@ -7,12 +7,24 @@ const stopRunning = () => {
    }, 1000);
 };
 
+const startWebScraping = (messageType = '') => {
+   createRunningNotifications(messageType);
+   setDefaultsValues();
+   getStorages().then((resp) => {
+      setPromisesConnections(resp);
+   });
+};
+
 const setPromisesConnections = (resp) => {
    const { success, results } = resp;
    if (success) {
       const { chromeId, clientInfo } = results;
-      getProviderConnections(chromeId).then((providers) => {
-         setEachClients(providers, clientInfo, chromeId);
+      getProviderConnections(chromeId).then(({ data, succeeded }) => {
+         console.log('connections', data);
+
+         if (succeeded) {
+            setEachClients(data, clientInfo, chromeId);
+         }
       });
    }
 };
@@ -23,8 +35,9 @@ const getEachScraping = (allSet = []) => {
    if (!!allSet.length) {
       allSet.forEach((clientsSet) => {
          startScraping([clientsSet]).then((scrape) => {
-            if (scrape.StatusCode !== 500 && !!scrape.length) {
-               results.push(scrape[0]);
+            if (scrape.succeeded && !!scrape.data.length) {
+               console.log('scrapescrapescrape', scrape);
+               results.push(scrape.data[0]);
                setStorage({
                   dataScrapted: results,
                });

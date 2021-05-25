@@ -15,9 +15,11 @@ const postConnectToProvider = ({ $http, details }) => {
 
 const getConnectToProvider = ({ $http, browserId }) => {
    const urlChecker = baseURL + 'setup/get-credential';
-   return $http.get(urlChecker, {
-      params: { browserId },
-   });
+   return $http
+      .get(urlChecker, {
+         params: { browserId },
+      })
+      .then(({ data }) => data);
 };
 
 const encodeURI = (queries = {}) => {

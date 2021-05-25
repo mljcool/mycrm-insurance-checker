@@ -24,17 +24,18 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
          const browserId = chromeId;
          $scope.browserId = browserId;
 
-         getConnectToProvider({ $http, browserId }).then(({ status, data }) => {
-            if (status === 200) {
-               console.log('getConnectToProvider', data);
-               $scope.insurerList = $scope.insurerList.map((inurances) => {
-                  inurances.isConnected = data.some(
-                     (ins) => ins.insurerId === inurances.id,
-                  );
-                  return inurances;
-               });
-            }
-         });
+         getConnectToProvider({ $http, browserId }).then(
+            ({ succeeded, data }) => {
+               if (succeeded) {
+                  $scope.insurerList = $scope.insurerList.map((inurances) => {
+                     inurances.isConnected = data.some(
+                        (ins) => ins.insurerId === inurances.id,
+                     );
+                     return inurances;
+                  });
+               }
+            },
+         );
          apply();
       }
    });
@@ -96,11 +97,9 @@ const onConnectAccounts = ({ $scope, apply, getStoragesToMap, $http }) => {
 
                         return;
                      }
-                     console.log('SUCCESS', success);
                      selectedConnection.isConnected = true;
                   },
                   (error) => {
-                     console.log('ERROR', error);
                      selectedConnection.showMessage = true;
                      selectedConnection.message = error;
                   },

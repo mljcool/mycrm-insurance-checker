@@ -58,12 +58,14 @@
          <div
             class="warning_code_block"
             ng-repeat="error in errorObj track by $index"
-            ng-if="!!error.StatusCode && !triggerRerun"
+            ng-if="!triggerRerun"
          >
             <p>
-               <span>status code:{{error.StatusCode}}</span>
+               <span>insurer name:{{error.insurerName}}</span>
                <br />
-               <span>message:{{error.Message}}</span>
+               <span>message:{{error.messages}}</span>
+               <br />
+               <span>data:{{error.data}}</span>
             </p>
          </div>
       </div>

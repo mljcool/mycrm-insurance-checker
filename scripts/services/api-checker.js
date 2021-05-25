@@ -17,6 +17,9 @@ const crmRequest = (urlStr) => {
    };
    return $.ajax(settings);
 };
+const setStorage = (props = {}) => {
+   chrome.storage.local.set(props);
+};
 
 const getClientInfo = (familyId) => {
    crmRequest(urlClientMyCRM(familyId)).done((response) => {
