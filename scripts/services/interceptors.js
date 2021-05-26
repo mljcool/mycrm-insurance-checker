@@ -4,9 +4,11 @@ $(function() {
    setTimeout(() => {
       interceptMyCRM();
    }, 2500);
-   developer_mode();
+   // developer_mode();
 });
 
 $(window).bind('hashchange', function() {
-   interceptMyCRM();
+   setTimeout(() => {
+      interceptMyCRM();
+   }, 1000);
 });

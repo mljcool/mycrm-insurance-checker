@@ -33,6 +33,7 @@
          <div
             class="topright error_retry_again"
             role="button"
+            ng-if="!onProgress"
             ng-click="reRunScraping()"
          >
             <div class="message_retry" ng-if="!triggerRerun">

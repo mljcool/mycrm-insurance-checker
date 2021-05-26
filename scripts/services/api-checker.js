@@ -21,19 +21,26 @@ const setStorage = (props = {}) => {
    chrome.storage.local.set(props);
 };
 
+const clearStrage = (props = {}) => {
+   chrome.storage.local.set({
+      dataScrapted: [],
+   });
+};
+
 const getClientInfo = (familyId) => {
    crmRequest(urlClientMyCRM(familyId)).done((response) => {
       if (!!response.length) {
          const clientInfo = mapClientsInfo(response.sort().reverse());
+         clearStrage();
          setStorage({
             clientInfo,
          });
 
          chrome.storage.local.get(['clientInfo'], (results) => {
             if (!!results.clientInfo) {
-               chrome.runtime.sendMessage('', {
-                  type: 'scraping',
-               });
+               // chrome.runtime.sendMessage('', {
+               //    type: 'scraping',
+               // });
             }
          });
 

@@ -1,8 +1,14 @@
 <div
    class="ic_card"
    ng-repeat="client in insuranceListScraping track by $index"
+   ng-if="client.policies.length"
 >
-   <div class="topright" role="button" ng-click="resyncClientData(client)">
+   <div
+      ng-if="!onProgress"
+      class="topright"
+      role="button"
+      ng-click="resyncClientData(client)"
+   >
       <img
          src="./assets/sync.png"
          title="Re-sync data"

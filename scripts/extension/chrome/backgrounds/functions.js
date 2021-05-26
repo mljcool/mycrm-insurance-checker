@@ -1,4 +1,5 @@
 /** @format */
+
 const stopRunning = () => {
    setTimeout(() => {
       chrome.runtime.sendMessage('', {
@@ -34,9 +35,8 @@ const getEachScraping = (allSet = []) => {
    let pushErrors = [];
    if (!!allSet.length) {
       allSet.forEach((clientsSet) => {
-         startScraping([clientsSet]).then((scrape) => {
+         startScraping(clientsSet).then((scrape) => {
             if (scrape.succeeded && !!scrape.data.length) {
-               console.log('scrapescrapescrape', scrape);
                results.push(scrape.data[0]);
                setStorage({
                   dataScrapted: results,
@@ -59,16 +59,16 @@ const getEachScraping = (allSet = []) => {
 const setEachClients = (connections = [], clients = [], chromeId) => {
    const allSet = [];
    connections.forEach((provider, index) => {
-      clients.forEach((client) => {
-         const newSet = {
+      const newData = clients.map((client) => {
+         return {
             Birthday: client.birthday,
             FirstName: client.firstName,
             LastName: client.lastName,
             BrowserId: chromeId,
             InsurerName: (provider.insurerName || '').toLowerCase(),
          };
-         allSet.push(newSet);
       });
+      allSet.push(newData);
       if (index === connections.length - 1) {
          getEachScraping(allSet);
       }

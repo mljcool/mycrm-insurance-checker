@@ -1,0 +1,63 @@
+.client_details_wrapping {
+   padding: 1rem;
+}
+
+.ic_card_name_label {
+   position: relative;
+}
+
+.client_inform_box {
+   padding: 12px 10px;
+}
+.list_items {
+   background: #f5f1f8;
+}
+
+.list_items:first-child {
+   border-top-left-radius: 6px;
+   border-top-right-radius: 6px;
+}
+
+.list_items:last-child {
+   border-bottom-left-radius: 6px;
+   border-bottom-right-radius: 6px;
+}
+.list_items:not(:last-child) {
+   border-bottom: 1px #e3dfe6 solid;
+}
+
+.client_inform_box .ic_card_name_label {
+   margin-bottom: 0 !important;
+}
+
+.client_more_details {
+   display: flex;
+   flex-direction: column;
+   right: 0;
+   margin-right: 1rem;
+   position: absolute;
+}
+
+.action_items {
+   padding: 1rem 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.sync_btn {
+   margin-top: 5px;
+   display: block;
+   cursor: pointer;
+   background: #5ccece;
+   padding: 6px 25px;
+   color: #f5f1f8;
+   font-weight: 500;
+   border-radius: 3px;
+}
+
+.sync_btn:hover {
+   background: #7de7e7;
+}
+.is_checking {
+   margin-top: 7px;
+}

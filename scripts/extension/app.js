@@ -32,6 +32,9 @@ app.controller('appCtrl', [
       $scope.tabPresent = 1;
       $scope.insurerList = insurerList;
       $scope.clientList = clientList;
+      $scope.isScraping = false;
+      $scope.isChecking = false;
+      $scope.onProgress = true;
 
       $scope.openViewLink = (link) => {
          console.log(link);
@@ -45,17 +48,6 @@ app.controller('appCtrl', [
       tabSwitcher({ $scope });
       onConnectAccounts({ $scope, apply, getStoragesToMap, $http });
 
-      $scope.openViewComparison = (client) => {
-         client.isSyncing = true;
-         const insurance = { syncID: '' };
-         setTimeout(() => {
-            openComparisonWindow({ insurance });
-            client.isSyncing = false;
-            apply();
-         }, 3500);
-         apply();
-      };
-
       $scope.resyncClientData = (client) => {
          client.reSyncData = true;
          triggerResyncOn(client);
@@ -67,6 +59,7 @@ app.controller('appCtrl', [
       };
 
       $scope.reRunScraping = () => {
+         let totalProvider = 1;
          chrome.runtime.sendMessage('', {
             type: 're-scraping',
          });
@@ -80,48 +73,68 @@ app.controller('appCtrl', [
          apply();
       };
 
-      $scope.setInitials = (fullName = '') => {
-         // console.log('fullname', fullName);
-         if (!fullName) {
-            return '';
-         }
-         const nameSplit = fullName.split(' ');
-         const strsFormat = (str) => (str || '').charAt(0).toUpperCase();
-         const setNames =
-            strsFormat(nameSplit[0]) + '' + strsFormat(nameSplit[1]);
-         return setNames;
-      };
-
       $scope.removeSpaces = (textLogo = '') => {
          return removeSpaces(textLogo);
       };
 
-      getStoragesToMap().then(({ success, results }) => {
-         if (success) {
-            const { clientInfo, errorStatus, dataScrapted } = results;
-            if (clientInfo.length) {
+      $scope.setStorage = () => {
+         getStoragesToMap().then(({ success, results }) => {
+            if (success) {
+               const { clientInfo, errorStatus, dataScrapted } = results;
+               if (clientInfo.length) {
+                  console.log('clientInfo', clientInfo);
+                  $scope.clientList = clientInfo;
+               }
+               // EachTabs({ $scope });
+
+               if (dataScrapted.length && !!dataScrapted) {
+                  $scope.insuranceListScraping = dataScrapted;
+                  $scope.isChecking = false;
+                  $scope.onProgress = false;
+                  $scope.isScraping = true;
+               } else {
+                  $scope.insuranceListScraping = [];
+               }
+
+               if (!!errorStatus) {
+                  const { hasError, dataError } = errorStatus;
+
+                  $scope.hasError = hasError;
+                  $scope.errorObj = JSON.parse(dataError);
+                  console.log('$scope.insuranceInProgress', $scope.errorObj);
+               }
+               console.log('dataScrapted', dataScrapted);
             }
-            // EachTabs({ $scope });
+         });
+      };
+      $scope.setStorage();
 
-            if (dataScrapted.length && !!dataScrapted) {
-               $scope.insuranceListScraping = dataScrapted;
-            } else {
-               $scope.insuranceListScraping = [];
+      $scope.onChecking = () => {
+         let totalProvider = 1;
+         $scope.isChecking = true;
+         chrome.runtime.sendMessage('', {
+            type: 'scraping',
+         });
+         chrome.runtime.onMessage.addListener((data) => {
+            if (data.type === 'stop') {
+               $scope.isScraping = true;
+               $scope.setStorage();
+
+               console.log('stop_checking', totalProvider);
+               const allConnected = $scope.insurerList.filter(
+                  (insure) => insure.isConnected,
+               ).length;
+               console.log('allConnected', allConnected);
+               if (totalProvider === allConnected) {
+                  $scope.isChecking = false;
+                  $scope.onProgress = false;
+               }
+               totalProvider++;
+               apply();
             }
+         });
 
-            if (!!errorStatus) {
-               const { hasError, dataError } = errorStatus;
-
-               $scope.hasError = hasError;
-               $scope.errorObj = JSON.parse(dataError);
-               console.log('$scope.insuranceInProgress', $scope.errorObj);
-            }
-            console.log('dataScrapted', dataScrapted);
-
-            apply();
-
-            console.log('$scope.errorStatus', errorStatus);
-         }
-      });
+         apply();
+      };
    },
 ]);

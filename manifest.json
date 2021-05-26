@@ -26,6 +26,7 @@
    ],
    "background": {
       "scripts": [
+         "./scripts/lib/jquery-3.6.0.min.js",
          "./scripts/extension/chrome/backgrounds/api.js",
          "./scripts/extension/chrome/backgrounds/storages.js",
          "./scripts/extension/chrome/backgrounds/functions.js",

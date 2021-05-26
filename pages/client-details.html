@@ -1,0 +1,40 @@
+<div class="client_details_wrapping">
+   <div
+      class="client_inform_box list_items"
+      ng-repeat="client in clientList track by $index"
+   >
+      <div class="ic_card_name_label ">
+         <div class="ic_card_avatar">
+            {{client.initialName}}
+         </div>
+         <div class="ic_card_labels">
+            <span class="ic_card_ins"> Client</span>
+            <span class="ic_card_name">
+               {{client.firstName}} {{client.lastName}}
+            </span>
+         </div>
+         <div class="client_more_details">
+            <span>{{client.gender}}</span>
+            <span>{{client.birthday}}</span>
+         </div>
+      </div>
+   </div>
+   <div class="list_items action_items">
+      <span
+         >Would you like to check Insurers for
+         <span ng-if="clientList.length > 1">
+            these clients
+         </span>
+         <span ng-if="clientList.length=== 1">
+            this client
+         </span>
+      </span>
+      <div class="switch_container is_block is_checking" ng-if="isChecking">
+         <span class="loading-status">Connecting....</span>
+         <div class="circleloader"></div>
+      </div>
+      <a class="sync_btn" ng-click="onChecking()" ng-if="!isChecking"
+         >Sync Insurers</a
+      >
+   </div>
+</div>

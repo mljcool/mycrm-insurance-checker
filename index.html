@@ -1,58 +1,77 @@
 <!DOCTYPE html>
 <html ng-app="InsuranceCheckerChromeEx" ng-csp>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insurance Checker</title>
-    <script src="scripts/lib/jquery-3.6.0.min.js"></script>
-    <script src="scripts/lib/angular.min.js"></script>
-    <script src="scripts/extension/constants/tabs.js"></script>
-    <script src="scripts/extension/constants/memory-data.js"></script>
-    <script src="scripts/extension/utils/helper.js"></script>
-    <script src="scripts/extension/utils/connect.js"></script>
-    <script src="scripts/extension/chrome/chrome-window.js"></script>
-    <script src="scripts/extension/chrome/chrome-notification.js"></script>
-    <script src="scripts/extension/chrome/chrome-token.js"></script>
-    <script src="scripts/extension/chrome/chrome-storage.js"></script>
-    <script src="scripts/extension/apis/api-service.js"></script>
-    <script src="scripts/extension/app.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto"
-      rel="stylesheet"
-    />
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Insurance Checker</title>
+      <script src="scripts/lib/jquery-3.6.0.min.js"></script>
+      <script src="scripts/lib/angular.min.js"></script>
+      <script src="scripts/extension/constants/tabs.js"></script>
+      <script src="scripts/extension/constants/memory-data.js"></script>
+      <script src="scripts/extension/utils/helper.js"></script>
+      <script src="scripts/extension/utils/connect.js"></script>
+      <script src="scripts/extension/chrome/chrome-window.js"></script>
+      <script src="scripts/extension/chrome/chrome-notification.js"></script>
+      <script src="scripts/extension/chrome/chrome-token.js"></script>
+      <script src="scripts/extension/chrome/chrome-storage.js"></script>
+      <script src="scripts/extension/apis/api-service.js"></script>
+      <script src="scripts/extension/chrome/backgrounds/api.js"></script>
+      <script src="scripts/extension/chrome/backgrounds/storages.js"></script>
+      <script src="scripts/extension/chrome/backgrounds/functions.js"></script>
+      <script src="scripts/extension/chrome/backgrounds/notifications.js"></script>
+      <script src="scripts/extension/app.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="styles/main-styles.css" />
-    <link rel="stylesheet" type="text/css" href="styles/list-styles.css" />
-    <link rel="stylesheet" type="text/css" href="styles/card-styles.css" />
-    <link rel="stylesheet" type="text/css" href="styles/scroll.css" />
-    <link rel="stylesheet" type="text/css" href="styles/ic_card_settings.css" />
-    <link rel="stylesheet" type="text/css" href="styles/form_connect.css" />
-    <link rel="stylesheet" type="text/css" href="styles/sync_effect.css" />
-  </head>
-  <body ng-controller="appCtrl">
-    <div id="app_checker">
-      <!--START NAVBAR -->
-      <div id="ic_main_navbar">
-        <div class="ic_main_logo_block">
-          <img src="./assets/mycrm-logo.png" width="100px" height="32px" />
-          <span>Insurance Checker</span>
-        </div>
-        <div class="page_render" ng-include="'components/menu-bar.html'"></div>
+      <link
+         href="https://fonts.googleapis.com/css?family=Roboto"
+         rel="stylesheet"
+      />
+
+      <link rel="stylesheet" type="text/css" href="styles/client_details.css" />
+      <link rel="stylesheet" type="text/css" href="styles/main-styles.css" />
+      <link rel="stylesheet" type="text/css" href="styles/list-styles.css" />
+      <link rel="stylesheet" type="text/css" href="styles/card-styles.css" />
+      <link rel="stylesheet" type="text/css" href="styles/scroll.css" />
+      <link
+         rel="stylesheet"
+         type="text/css"
+         href="styles/ic_card_settings.css"
+      />
+      <link rel="stylesheet" type="text/css" href="styles/form_connect.css" />
+      <link rel="stylesheet" type="text/css" href="styles/sync_effect.css" />
+   </head>
+   <body ng-controller="appCtrl">
+      <div id="app_checker">
+         <!--START NAVBAR -->
+         <div id="ic_main_navbar">
+            <div class="ic_main_logo_block">
+               <img src="./assets/mycrm-logo.png" width="100px" height="32px" />
+               <span>Insurance Checker</span>
+            </div>
+            <div
+               class="page_render"
+               ng-include="'components/menu-bar.html'"
+            ></div>
+         </div>
+         <!--END NAVBAR -->
+
+         <div
+            ng-if="slideSettings"
+            class="page_render"
+            ng-include="'pages/settings.html'"
+         ></div>
+
+         <div
+            ng-if="!slideSettings && (!isScraping || onProgress)"
+            class="page_render"
+            ng-include="'pages/client-details.html'"
+         ></div>
+
+         <div
+            ng-if="!slideSettings && isScraping"
+            class="page_render"
+            ng-include="'pages/insurance-list.html'"
+         ></div>
       </div>
-      <!--END NAVBAR -->
-
-      <div
-        ng-if="slideSettings"
-        class="page_render"
-        ng-include="'pages/settings.html'"
-      ></div>
-
-      <div
-        ng-if="!slideSettings"
-        class="page_render"
-        ng-include="'pages/insurance-list.html'"
-      ></div>
-    </div>
-  </body>
+   </body>
 </html>
