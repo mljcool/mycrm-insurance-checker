@@ -10,6 +10,7 @@ const getStoragesToMap = () => {
             'chromeId',
             'errorStatus',
             'dataScrapted',
+            'autoCheck',
          ],
          (results) => {
             if (chrome.runtime.lastError) {
@@ -23,4 +24,8 @@ const getStoragesToMap = () => {
          },
       );
    });
+};
+
+const setStorageApp = (props = {}) => {
+   chrome.storage.local.set(props);
 };

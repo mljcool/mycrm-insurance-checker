@@ -1,52 +1,62 @@
 <div class="ic_card_settings">
-  <div class="ic_setting_card_header">
-    <span>Settings</span>
-    <button>save</button>
-  </div>
-  <div class="ic_setting_card_subheader">
-    <div class="ic_setting_card_auto">
-      <input type="checkbox" name="auto_check" />
-      <label for="auto_check">Auto check on open</label>
-    </div>
-    <div class="ic_setting_card_label">
-      Connections
-    </div>
-  </div>
-  <div class="ic_setting_card_body">
-    <div
-      class="ic_card_setting_insurer_list"
-      ng-repeat="insurer in insurerList track by $index"
-    >
-      <div class="ic_setting_provider">
-        <div class="ic_card_insurer_logo">
-          <img
-            ng-src="{{'./assets/insurers/'+insurer.id+'.png'}}"
-            width="47px"
-            height="28px"
-          />
-          <span
-            >{{ insurer.name | limitTo: 17 }}{{insurer.name > 10 ? '...' :
-            '...'}}</span
-          >
-          <span ng-if="insurer.isConnected">(Linked)</span>
-        </div>
-        <div class="ic_setting_btn_sync">
-          <button
-            ng-if="!insurer.isConnected"
-            ng-click="onConnect(insurer)"
-            class="connect_btn"
-          >
-            Connect
-          </button>
-          <button
-            ng-if="insurer.isConnected"
-            ng-click="onConnect(insurer)"
-            class="edit_btn"
-          >
-            Edit
-          </button>
-        </div>
+   <div class="ic_setting_card_header">
+      <span>Settings</span>
+      <div class="settings_succes_message" ng-class="{'visible':settingSave}">
+         <p>Settings successfully saved.</p>
       </div>
-    </div>
-  </div>
+
+      <button ng-click="saveSettings('save');">save</button>
+   </div>
+   <div class="ic_setting_card_subheader">
+      <div class="ic_setting_card_auto">
+         <input
+            type="checkbox"
+            ng-click="saveSettings('checking')"
+            name="auto_check"
+            ng-checked="autoCheck"
+            ng-model="autoCheck"
+         />
+         <label for="auto_check">Auto check on open</label>
+      </div>
+      <div class="ic_setting_card_label">
+         Connections
+      </div>
+   </div>
+   <div class="ic_setting_card_body">
+      <div
+         class="ic_card_setting_insurer_list"
+         ng-repeat="insurer in insurerList track by $index"
+      >
+         <div class="ic_setting_provider">
+            <div class="ic_card_insurer_logo">
+               <img
+                  ng-src="{{'./assets/insurers/'+insurer.id+'.png'}}"
+                  width="47px"
+                  height="28px"
+               />
+               <span
+                  >{{ insurer.name | limitTo: 17 }}{{insurer.name > 10 ? '...' :
+                  '...'}}</span
+               >
+               <span ng-if="insurer.isConnected">(Linked)</span>
+            </div>
+            <div class="ic_setting_btn_sync">
+               <button
+                  ng-if="!insurer.isConnected"
+                  ng-click="onConnect(insurer)"
+                  class="connect_btn"
+               >
+                  Connect
+               </button>
+               <button
+                  ng-if="insurer.isConnected"
+                  ng-click="onConnect(insurer)"
+                  class="edit_btn"
+               >
+                  Edit
+               </button>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>

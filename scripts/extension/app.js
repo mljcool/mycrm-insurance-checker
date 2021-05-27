@@ -36,6 +36,9 @@ app.controller('appCtrl', [
       $scope.isChecking = false;
       $scope.onProgress = true;
 
+      $scope.autoCheck = false;
+      $scope.settingSave = false;
+
       $scope.openViewLink = (link) => {
          console.log(link);
          window.open(link, '_blank').focus();
@@ -80,7 +83,12 @@ app.controller('appCtrl', [
       $scope.setStorage = () => {
          getStoragesToMap().then(({ success, results }) => {
             if (success) {
-               const { clientInfo, errorStatus, dataScrapted } = results;
+               const {
+                  clientInfo,
+                  errorStatus,
+                  dataScrapted,
+                  autoCheck,
+               } = results;
                if (clientInfo.length) {
                   console.log('clientInfo', clientInfo);
                   $scope.clientList = clientInfo;
@@ -104,6 +112,10 @@ app.controller('appCtrl', [
                   console.log('$scope.insuranceInProgress', $scope.errorObj);
                }
                console.log('dataScrapted', dataScrapted);
+               if (autoCheck) {
+                  console.log('autoCheck', autoCheck);
+                  $scope.autoCheck = autoCheck;
+               }
             }
          });
       };
@@ -134,6 +146,24 @@ app.controller('appCtrl', [
             }
          });
 
+         apply();
+      };
+
+      $scope.saveSettings = (type) => {
+         if (type === 'checking') {
+            $scope.autoCheck = !$scope.autoCheck;
+            return;
+         }
+         console.log('$scope.autoCheck', $scope.autoCheck);
+         setStorageApp({
+            autoCheck: $scope.autoCheck,
+         });
+         autoSyncNotification($scope.autoCheck);
+         $scope.settingSave = true;
+         setTimeout(() => {
+            $scope.settingSave = false;
+            apply();
+         }, 1500);
          apply();
       };
    },
