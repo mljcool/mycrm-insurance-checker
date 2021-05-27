@@ -21,12 +21,15 @@ const setStorage = (props = {}) => {
    chrome.storage.local.set(props);
 };
 
-const clearStrage = (props = {}) => {
+const clearStrage = () => {
    chrome.storage.local.set({
       dataScrapted: [],
    });
    chrome.storage.local.set({
-      errorStatus: [],
+      errorStatus: {
+         hasError: false,
+         dataError: [],
+      },
    });
 };
 
@@ -37,14 +40,6 @@ const getClientInfo = (familyId) => {
          clearStrage();
          setStorage({
             clientInfo,
-         });
-
-         chrome.storage.local.get(['clientInfo'], (results) => {
-            if (!!results.clientInfo) {
-               // chrome.runtime.sendMessage('', {
-               //    type: 'scraping',
-               // });
-            }
          });
 
          console.log('getClientInfo API', clientInfo);

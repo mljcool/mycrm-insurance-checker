@@ -104,8 +104,8 @@ app.controller('appCtrl', [
                   $scope.insuranceListScraping = [];
                }
 
-               if (!!errorStatus) {
-                  const { hasError, dataError } = errorStatus;
+               if (errorStatus.hasError) {
+                  const { hasError, dataError = [] } = errorStatus;
 
                   $scope.hasError = hasError;
                   $scope.errorObj = JSON.parse(dataError);
@@ -128,7 +128,9 @@ app.controller('appCtrl', [
 
       $scope.onAutoChecking = () => {
          setTimeout(() => {
-            if ($scope.autoCheck && !$scope.insuranceListScraping.length) {
+            const hasErrors = !$scope.errorObj.length;
+            const hassDataScrape = !$scope.insuranceListScraping.length;
+            if ($scope.autoCheck && hassDataScrape && hasErrors) {
                $scope.onChecking();
                console.log('HERE...........', $scope.autoCheck);
             }
