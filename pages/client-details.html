@@ -19,7 +19,7 @@
          </div>
       </div>
    </div>
-   <div class="list_items action_items">
+   <div class="list_items action_items" ng-if="!autoCheck">
       <span
          >Would you like to check Insurers for
          <span ng-if="clientList.length > 1">
@@ -36,5 +36,13 @@
       <a class="sync_btn" ng-click="onChecking()" ng-if="!isChecking"
          >Sync Insurers</a
       >
+   </div>
+
+   <div class="list_items action_items" ng-if="autoCheck">
+      <span class="auto_checking">Auto checking is ON</span>
+      <div class="switch_container is_block is_checking">
+         <span class="loading-status">Checking Insurances</span>
+         <div class="circleloader"></div>
+      </div>
    </div>
 </div>

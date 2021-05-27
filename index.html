@@ -62,13 +62,13 @@
          ></div>
 
          <div
-            ng-if="!slideSettings && (!isScraping || onProgress)"
+            ng-if="!slideSettings && !errorObj.length && (!isScraping || onProgress)"
             class="page_render"
             ng-include="'pages/client-details.html'"
          ></div>
 
          <div
-            ng-if="!slideSettings && isScraping"
+            ng-if="!slideSettings && (isScraping || !!errorObj.length)"
             class="page_render"
             ng-include="'pages/insurance-list.html'"
          ></div>

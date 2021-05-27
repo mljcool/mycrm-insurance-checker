@@ -109,17 +109,33 @@ app.controller('appCtrl', [
 
                   $scope.hasError = hasError;
                   $scope.errorObj = JSON.parse(dataError);
-                  console.log('$scope.insuranceInProgress', $scope.errorObj);
+                  console.log('$scope.errorObj', $scope.errorObj);
+                  if (!!$scope.errorObj.length) {
+                     $scope.isChecking = false;
+                     $scope.onProgress = false;
+                     $scope.isScraping = true;
+                  }
                }
                console.log('dataScrapted', dataScrapted);
                if (autoCheck) {
-                  console.log('autoCheck', autoCheck);
                   $scope.autoCheck = autoCheck;
                }
+               apply();
             }
          });
       };
       $scope.setStorage();
+
+      $scope.onAutoChecking = () => {
+         setTimeout(() => {
+            if ($scope.autoCheck && !$scope.insuranceListScraping.length) {
+               $scope.onChecking();
+               console.log('HERE...........', $scope.autoCheck);
+            }
+         }, 400);
+      };
+
+      $scope.onAutoChecking();
 
       $scope.onChecking = () => {
          let totalProvider = 1;

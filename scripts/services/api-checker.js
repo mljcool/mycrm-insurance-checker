@@ -25,6 +25,9 @@ const clearStrage = (props = {}) => {
    chrome.storage.local.set({
       dataScrapted: [],
    });
+   chrome.storage.local.set({
+      errorStatus: [],
+   });
 };
 
 const getClientInfo = (familyId) => {
